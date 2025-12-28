@@ -119,6 +119,13 @@ Das Lab enthält:
 - Troubleshooting
 - optional Lösung
 
+Die Cisco Lab Übung soll so gestaltet sein, dass sie direkt in einer Cisco-Umgebung (z.B. Packet Tracer, VIRL/CML, echte Hardware) umgesetzt werden kann. Sie soll praxisnah und lehrreich sein und auch typische Herausforderungen und Fehlerquellen behandeln. Der Schwierigkeitsgrad soll an Einsteiger bis Fortgeschrittene angepasst sein.
+
+Es wird empfohlen, die Lab-Übung in klar strukturierte Abschnitte zu gliedern und mit Überschriften zu versehen. Codeblöcke für Konfigurationen und Befehle sollten klar erkennbar sein.
+
+Jeder Abschnitt sollte prägnant und verständlich formuliert sein, um den Lernprozess zu unterstützen.
+
+
 ### 4) Markdown → PDF
 **Tooling:**
 1) `pandoc` + `xelatex`/`lualatex`
