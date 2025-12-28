@@ -1,0 +1,178 @@
+{
+  "name": "vlan-router-on-stick",
+  "title": "VLAN Router-on-a-Stick Lab",
+  "description": "Konfiguration eines Netzwerks mit mehreren VLANs und Inter-VLAN Routing über einen Router (Router-on-a-Stick)",
+  "generated": "2025-12-28T12:46:00.000Z",
+  "source": "Lernsituation-IT.txt",
+  "topology": {
+    "devices": {
+      "R-Kiesel": {
+        "type": "router",
+        "vendor": "cisco",
+        "model": "4331",
+        "role": "router-on-a-stick",
+        "interfaces": [
+          {
+            "name": "G0/0/0",
+            "type": "physical",
+            "status": "trunk"
+          },
+          {
+            "name": "G0/0/0.10",
+            "type": "subinterface",
+            "vlan": 10,
+            "ip": "10.10.10.1/27",
+            "encapsulation": "dot1Q"
+          },
+          {
+            "name": "G0/0/0.20",
+            "type": "subinterface",
+            "vlan": 20,
+            "ip": "10.10.20.1/24",
+            "encapsulation": "dot1Q"
+          },
+          {
+            "name": "G0/0/0.30",
+            "type": "subinterface",
+            "vlan": 30,
+            "ip": "10.10.30.1/25",
+            "encapsulation": "dot1Q"
+          },
+          {
+            "name": "G0/0/0.40",
+            "type": "subinterface",
+            "vlan": 40,
+            "ip": "10.10.40.1/26",
+            "encapsulation": "dot1Q"
+          }
+        ]
+      },
+      "S1": {
+        "type": "switch",
+        "vendor": "cisco",
+        "role": "core/distribution",
+        "location": "Etage 1",
+        "vlans": [10, 20, 30, 40],
+        "trunk_ports": ["Gi0/1", "Fa0/1", "Fa0/2"],
+        "access_ports": {
+          "Fa0/11-12": 10,
+          "Fa0/13-18": 40
+        }
+      },
+      "S2": {
+        "type": "switch",
+        "vendor": "cisco",
+        "role": "access",
+        "location": "Etage 2",
+        "vlans": [10, 20, 30, 40],
+        "trunk_ports": ["Fa0/1"],
+        "access_ports": {
+          "Fa0/3-10": 20,
+          "Fa0/11-16": 30,
+          "Fa0/17-20": 40
+        }
+      },
+      "S3": {
+        "type": "switch",
+        "vendor": "cisco",
+        "role": "access",
+        "location": "Etage 3",
+        "vlans": [10, 20, 30, 40],
+        "trunk_ports": ["Fa0/2"],
+        "access_ports": {
+          "Fa0/3-6": 10,
+          "Fa0/7-14": 20,
+          "Fa0/15-18": 40
+        }
+      }
+    },
+    "links": [
+      {
+        "a": "R-Kiesel:G0/0/0",
+        "b": "S1:Gi0/1",
+        "type": "trunk",
+        "vlans": [10, 20, 30, 40]
+      },
+      {
+        "a": "S1:Fa0/1",
+        "b": "S2:Fa0/1",
+        "type": "trunk",
+        "vlans": [10, 20, 30, 40]
+      },
+      {
+        "a": "S1:Fa0/2",
+        "b": "S3:Fa0/2",
+        "type": "trunk",
+        "vlans": [10, 20, 30, 40]
+      }
+    ],
+    "vlans": [
+      {
+        "id": 10,
+        "name": "Management",
+        "purpose": "IT/Netz-Admin",
+        "network": "10.10.10.0/27",
+        "mask": "255.255.255.224",
+        "gateway": "10.10.10.1",
+        "usable_hosts": 30
+      },
+      {
+        "id": 20,
+        "name": "Office",
+        "purpose": "Vertrieb/HR/Backoffice",
+        "network": "10.10.20.0/24",
+        "mask": "255.255.255.0",
+        "gateway": "10.10.20.1",
+        "usable_hosts": 254
+      },
+      {
+        "id": 30,
+        "name": "Dev",
+        "purpose": "Entwicklung/Produktion",
+        "network": "10.10.30.0/25",
+        "mask": "255.255.255.128",
+        "gateway": "10.10.30.1",
+        "usable_hosts": 126
+      },
+      {
+        "id": 40,
+        "name": "Guest",
+        "purpose": "Gäste/extern",
+        "network": "10.10.40.0/26",
+        "mask": "255.255.255.192",
+        "gateway": "10.10.40.1",
+        "usable_hosts": 62
+      }
+    ]
+  },
+  "requirements": [
+    "VLANs gemäß Tabelle auf allen Switches anlegen und benennen",
+    "Access-Ports je Etage zuordnen",
+    "Trunks zwischen Switches konfigurieren",
+    "Router-on-a-Stick auf G0/0/0 mit Subinterfaces einrichten",
+    "IPs der PCs passend setzen",
+    "Tests: Pings innerhalb des VLANs und über VLAN-Grenzen"
+  ],
+  "validation": {
+    "commands": [
+      "show vlan brief",
+      "show interfaces trunk",
+      "show ip interface brief",
+      "ping (intra-VLAN)",
+      "ping (inter-VLAN)"
+    ]
+  },
+  "files_generated": [
+    "diagram.drawio",
+    "diagram.png",
+    "lab.md",
+    "lab.pdf",
+    "gift/quiz.gift"
+  ],
+  "notes": [
+    "Native VLAN = 1 (Default)",
+    "Best Practice (separates Native VLAN) kann als Erweiterung umgesetzt werden",
+    "Alle Kabelverbindungen: Copper Straight-Through",
+    "Router-Name ist beispielhaft (R-Kiesel)"
+  ]
+}

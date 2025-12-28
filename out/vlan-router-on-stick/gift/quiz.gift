@@ -1,0 +1,234 @@
+// VLAN Router-on-a-Stick Lab - Quiz
+// Moodle GIFT Format
+
+$CATEGORY: $course$/VLAN Router-on-a-Stick
+
+// Frage 1: VLAN Grundlagen
+::VLAN-Konzept::Was ist der Hauptzweck von VLANs in einem Netzwerk?{
+=Segmentierung des Netzwerks in logische Broadcast-Domains
+~Erhöhung der physischen Bandbreite
+~Verschlüsselung des Netzwerkverkehrs
+~Automatische IP-Adressvergabe
+}
+
+// Frage 2: VLAN-IDs
+::VLAN-IDs::Welche VLAN-IDs werden in diesem Lab verwendet? (Wählen Sie alle zutreffenden){
+~%25%VLAN 10
+~%25%VLAN 20
+~%25%VLAN 30
+~%25%VLAN 40
+~%-100%VLAN 50
+~%-100%VLAN 1
+}
+
+// Frage 3: Router-on-a-Stick
+::Router-on-Stick-Konzept::Was ist ein "Router-on-a-Stick"?{
+=Eine Konfiguration, bei der ein einzelnes physisches Router-Interface mehrere VLANs über Subinterfaces bedient
+~Ein Router, der auf einem Switch montiert ist
+~Ein dedizierter VLAN-Router pro Netzwerksegment
+~Eine spezielle Hardware-Komponente für Inter-VLAN Routing
+}
+
+// Frage 4: 802.1Q
+::802.1Q-Standard::Welcher Standard wird für VLAN-Tagging auf Trunk-Ports verwendet?{
+=802.1Q
+~802.1X
+~802.11
+~802.3
+}
+
+// Frage 5: VLAN 10 Netzwerk
+::VLAN10-Netzwerk::Welches Netzwerk wird für VLAN 10 (Management) verwendet?{
+=10.10.10.0/27
+~10.10.20.0/24
+~10.10.30.0/25
+~10.10.40.0/26
+}
+
+// Frage 6: Gateway VLAN 20
+::Gateway-VLAN20::Welche IP-Adresse hat das Gateway für VLAN 20 (Office)?{
+=10.10.20.1
+~10.10.10.1
+~10.10.30.1
+~10.10.40.1
+}
+
+// Frage 7: Trunk-Befehl
+::Trunk-Konfiguration::Welcher Befehl konfiguriert einen Switch-Port als Trunk?{
+=switchport mode trunk
+~switchport mode access
+~switchport trunk enable
+~interface trunk
+}
+
+// Frage 8: Subinterface-Encapsulation
+::Subinterface-Config::Welcher Befehl aktiviert 802.1Q Encapsulation auf einem Subinterface für VLAN 10?{
+=encapsulation dot1Q 10
+~encapsulation vlan 10
+~vlan encapsulation 10
+~dot1q 10
+}
+
+// Frage 9: VLAN Verifikation
+::Show-VLAN::Mit welchem Befehl können Sie die VLAN-Konfiguration auf einem Switch anzeigen?{
+=show vlan brief
+~show vlans
+~display vlan
+~show running-config vlan
+}
+
+// Frage 10: Trunk Verifikation
+::Show-Trunk::Welcher Befehl zeigt die Trunk-Konfiguration auf einem Switch?{
+=show interfaces trunk
+~show trunk
+~show switchport trunk
+~display interfaces trunk
+}
+
+// Frage 11: Access-Port VLAN
+::Access-Port-Zuordnung::Welcher Befehl ordnet einen Access-Port dem VLAN 20 zu?{
+=switchport access vlan 20
+~vlan access 20
+~switchport vlan 20
+~access vlan 20
+}
+
+// Frage 12: Subnetzmaske VLAN 10
+::Subnetzmaske-VLAN10::Welche Subnetzmaske wird für VLAN 10 (10.10.10.0/27) verwendet?{
+=255.255.255.224
+~255.255.255.0
+~255.255.255.128
+~255.255.255.192
+}
+
+// Frage 13: Anzahl Hosts VLAN 10
+::Hosts-VLAN10::Wie viele nutzbare Host-Adressen gibt es im VLAN 10 Netzwerk (10.10.10.0/27)?{
+=30
+~32
+~62
+~14
+}
+
+// Frage 14: Switch-Hierarchie
+::Switch-Rolle-S1::Welche Rolle hat Switch S1 in der Topologie?{
+=Core/Distribution Switch
+~Access Switch
+~Edge Switch
+~Backbone Switch
+}
+
+// Frage 15: Trunk Allowed VLANs
+::Trunk-Allowed-VLANs::Welche VLANs sind auf dem Trunk zwischen S1 und dem Router erlaubt?{
+=10,20,30,40
+~Alle VLANs
+~Nur VLAN 1
+~10,20,30
+}
+
+// Frage 16: Interface Range
+::Interface-Range::Welcher Befehl konfiguriert mehrere Ports gleichzeitig (z.B. Fa0/3-10)?{
+=interface range fa0/3-10
+~interface fa0/3-10
+~interface multiple fa0/3-10
+~range fa0/3-10
+}
+
+// Frage 17: Native VLAN
+::Native-VLAN::Welches ist das Native VLAN in der Standard-Konfiguration dieses Labs?{
+=VLAN 1
+~VLAN 10
+~VLAN 99
+~VLAN 0
+}
+
+// Frage 18: Inter-VLAN Routing
+::Inter-VLAN-Device::Welches Gerät führt das Inter-VLAN Routing in dieser Topologie durch?{
+=Router R-Kiesel
+~Switch S1
+~Switch S2
+~Switch S3
+}
+
+// Frage 19: Physisches Interface
+::Router-Physical-Interface::Welches physische Interface auf dem Router wird für alle VLANs verwendet?{
+=G0/0/0
+~G0/0/1
+~Fa0/0
+~E0/0
+}
+
+// Frage 20: VLAN Name
+::VLAN-Name-Command::Welcher Befehl benennt ein VLAN (z.B. "Management" für VLAN 10)?{
+=name Management
+~vlan name Management
+~description Management
+~set name Management
+}
+
+// Frage 21: Konfiguration speichern
+::Save-Config::Welche zwei Befehle können verwendet werden, um die Konfiguration zu speichern? (Wählen Sie zwei){
+~%50%write memory
+~%50%copy running-config startup-config
+~%-100%save config
+~%-100%store configuration
+}
+
+// Frage 22: Troubleshooting Trunk
+::Troubleshoot-Trunk::Ein Trunk funktioniert nicht. Welcher Befehl zeigt die Switchport-Konfiguration?{
+=show interfaces [interface-id] switchport
+~show switchport [interface-id]
+~display interface [interface-id]
+~show port [interface-id]
+}
+
+// Frage 23: VLAN 30 Größe
+::VLAN30-Netzwerk::Wie groß ist das VLAN 30 (Dev) Netzwerk?{
+=/25
+~/24
+~/26
+~/27
+}
+
+// Frage 24: Matching - VLANs zu Zweck
+::VLAN-Zuordnung::Ordnen Sie die VLANs ihrem Zweck zu.{
+=VLAN 10 -> Management (IT/Netz-Admin)
+=VLAN 20 -> Office (Vertrieb/HR/Backoffice)
+=VLAN 30 -> Dev (Entwicklung/Produktion)
+=VLAN 40 -> Guest (Gäste/extern)
+}
+
+// Frage 25: IP-Adresse Subinterface
+::Subinterface-IP::Welche IP-Adresse hat das Subinterface G0/0/0.30 auf dem Router?{
+=10.10.30.1
+~10.10.10.1
+~10.10.20.1
+~10.10.40.1
+}
+
+// Frage 26: True/False - Trunk Kabel
+::Trunk-Kabel-Type::Für Trunk-Verbindungen zwischen Switches wird ein Crossover-Kabel benötigt.{
+FALSE#Moderne Switches unterstützen Auto-MDIX, Straight-Through Kabel werden verwendet
+}
+
+// Frage 27: True/False - VLAN Isolation
+::VLAN-Isolation::VLANs isolieren Broadcast-Domains voneinander.{
+TRUE#Das ist einer der Hauptzwecke von VLANs
+}
+
+// Frage 28: Short Answer - Default Gateway
+::Default-Gateway-VLAN20::Was ist die Default Gateway IP-Adresse für einen PC in VLAN 20?{
+=10.10.20.1
+=10.10.20.01
+}
+
+// Frage 29: Matching - Ports zu Funktionen
+::Port-Funktionen::Ordnen Sie die Ports ihrer Funktion zu.{
+=S1 Gi0/1 -> Trunk zu Router
+=S1 Fa0/1 -> Trunk zu S2
+=S1 Fa0/2 -> Trunk zu S3
+=S2 Fa0/3-10 -> Access Ports VLAN 20
+}
+
+// Frage 30: Essay - Vorteile VLANs
+::VLAN-Vorteile::Beschreiben Sie mindestens drei Vorteile der Verwendung von VLANs in einem Unternehmensnetzwerk.{}
+
