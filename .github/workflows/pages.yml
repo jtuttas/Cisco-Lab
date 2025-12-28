@@ -22,7 +22,7 @@ jobs:
           
       - name: Install dependencies
         run: |
-          pip install mkdocs mkdocs-material
+          pip install mkdocs mkdocs-material pymdown-extensions
           
-      - name: Deploy to GitHub Pages
+      - name: Build and deploy
         run: mkdocs gh-deploy --force
