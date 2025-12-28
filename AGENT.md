@@ -80,7 +80,7 @@ Zusätzlich für die Dokumentations-Site:
 ## Kernfähigkeiten
 
 ### 1) Topologie → Draw.io (Render)
-Der Agent konvertiert Geräte & Links in eine **drawio XML** (diagrams.net) Datei.
+Der Agent konvertiert Geräte & Links in eine **drawio XML** (diagrams.net) Datei. Dabei sollen stets dir offiziellen *CISCO* Shapes / Symbole verwendet werden ! 
 
 **Layout-Regeln (Default, deterministisch):**
 - Rollenbasiertes Placement (Core / Distribution / Access / Edge / WAN / Hosts)
