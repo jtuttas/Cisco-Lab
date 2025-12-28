@@ -16,7 +16,7 @@ Eine umfassende Übung zur Implementierung von VLANs und Inter-VLAN Routing mit 
 - Netzwerk-Troubleshooting
 
 **Ressourcen:**
-- [Lab-Anleitung (Online)](labs/vlan-router-on-stick/)
+- [Lab-Anleitung (Online)](labs/vlan-router-on-stick/index.md)
 - [Lab-Anleitung (PDF)](labs/vlan-router-on-stick/lab.pdf)
 - [Moodle GIFT Quiz](labs/vlan-router-on-stick/quiz.gift)
 - [Netzwerk-Diagramm](labs/vlan-router-on-stick/diagram.png)
