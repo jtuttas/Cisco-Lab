@@ -95,13 +95,23 @@ Der Agent konvertiert Geräte & Links in eine **drawio XML** (diagrams.net) Date
 
 ### 2) Draw.io → PNG (Export)
 **Tooling (Reihenfolge):**
-1) `drawio` CLI
+1) `drawio` CLI (bevorzugt - rendert Cisco-Symbole korrekt)
 2) `npx @drawio/drawio-export`
 3) Headless Chromium Export (Fallback)
 
-Parameter: Hintergrund weiß, Scale 2, Border 20.
+**Parameter:** Hintergrund weiß, Scale 2, Border 20.
 
-**Hinweis**: PNG wird in `out/<name>/diagram.png` gespeichert.
+**Empfohlener Export-Befehl (Linux/Unix):**
+```bash
+xvfb-run -a drawio --export --format png --scale 2 --border 20 \
+  --output out/<name>/diagram.png out/<name>/diagram.drawio
+```
+
+**Hinweis:** Auf Linux benötigt draw.io CLI einen X-Server (daher `xvfb-run`). Auf Windows/macOS kann der Befehl ohne `xvfb-run -a` ausgeführt werden.
+
+**Wichtig:** Die draw.io CLI ist erforderlich, um die offiziellen Cisco-Symbole (mxgraph.cisco.* - die Standard Cisco Icon Library von draw.io) korrekt zu rendern. Andere Export-Methoden könnten nur generische Shapes anzeigen.
+
+**Hinweis**: PNG wird in `out/<name>/diagram.png` gespeichert und nach `docs/labs/<name>/diagram.png` kopiert.
 
 Die PNG-Datei wird später in die Lab-Markdown eingebunden.
 
