@@ -101,6 +101,13 @@ Der Agent konvertiert Geräte & Links in eine **drawio XML** (diagrams.net) Date
 
 Parameter: Hintergrund weiß, Scale 2, Border 20.
 
+**Hinweis**: PNG wird in `out/<name>/diagram.png` gespeichert.
+
+Die PNG-Datei wird später in die Lab-Markdown eingebunden.
+
+Die PNG Datei sollte eine hohe Auflösung haben, sodass Details auch bei Zoom erkennbar sind.
+
+
 ### 3) Cisco-Lab-Übung als Markdown
 Das Lab enthält:
 - Zielsetzung/Szenario
