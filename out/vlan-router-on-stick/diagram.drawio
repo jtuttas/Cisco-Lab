@@ -1,0 +1,130 @@
+<mxfile host="app.diagrams.net" modified="2025-12-28T12:46:00.000Z" agent="draw.io" version="22.0.0">
+  <diagram name="VLAN Router-on-a-Stick Topology" id="topology">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Router R-Kiesel -->
+        <mxCell id="router-r-kiesel" value="R-Kiesel&#xa;(Cisco 4331)&#xa;Router-on-a-Stick" style="sketch=0;points=[[0.5,0,0],[1,0.5,0],[0.5,1,0],[0,0.5,0],[0.015,0.015,0],[0.985,0.015,0],[0.985,0.985,0],[0.015,0.985,0]];verticalLabelPosition=bottom;html=1;verticalAlign=top;aspect=fixed;align=center;pointerEvents=1;shape=mxgraph.cisco19.rect;prIcon=router;fillColor=#FAFAFA;strokeColor=#005073;" vertex="1" parent="1">
+          <mxGeometry x="485" y="100" width="200" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- Switch S1 Core -->
+        <mxCell id="switch-s1" value="S1&#xa;Core/Distribution&#xa;Etage 1" style="sketch=0;points=[[0.5,0,0],[1,0.5,0],[0.5,1,0],[0,0.5,0],[0.015,0.015,0],[0.985,0.015,0],[0.985,0.985,0],[0.015,0.985,0]];verticalLabelPosition=bottom;html=1;verticalAlign=top;aspect=fixed;align=center;pointerEvents=1;shape=mxgraph.cisco19.rect;prIcon=l2_switch;fillColor=#FAFAFA;strokeColor=#005073;" vertex="1" parent="1">
+          <mxGeometry x="485" y="300" width="200" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- Switch S2 Access -->
+        <mxCell id="switch-s2" value="S2&#xa;Access Switch&#xa;Etage 2" style="sketch=0;points=[[0.5,0,0],[1,0.5,0],[0.5,1,0],[0,0.5,0],[0.015,0.015,0],[0.985,0.015,0],[0.985,0.985,0],[0.015,0.985,0]];verticalLabelPosition=bottom;html=1;verticalAlign=top;aspect=fixed;align=center;pointerEvents=1;shape=mxgraph.cisco19.rect;prIcon=l2_switch;fillColor=#FAFAFA;strokeColor=#005073;" vertex="1" parent="1">
+          <mxGeometry x="200" y="500" width="200" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- Switch S3 Access -->
+        <mxCell id="switch-s3" value="S3&#xa;Access Switch&#xa;Etage 3" style="sketch=0;points=[[0.5,0,0],[1,0.5,0],[0.5,1,0],[0,0.5,0],[0.015,0.015,0],[0.985,0.015,0],[0.985,0.985,0],[0.015,0.985,0]];verticalLabelPosition=bottom;html=1;verticalAlign=top;aspect=fixed;align=center;pointerEvents=1;shape=mxgraph.cisco19.rect;prIcon=l2_switch;fillColor=#FAFAFA;strokeColor=#005073;" vertex="1" parent="1">
+          <mxGeometry x="770" y="500" width="200" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- Link R-Kiesel to S1 -->
+        <mxCell id="link-r-s1" value="Trunk&#xa;G0/0/0 ↔ Gi0/1&#xa;VLANs 10,20,30,40" style="endArrow=none;html=1;rounded=0;strokeWidth=2;strokeColor=#000000;" edge="1" parent="1" source="router-r-kiesel" target="switch-s1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="585" y="250" as="sourcePoint" />
+            <mxPoint x="635" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Link S1 to S2 -->
+        <mxCell id="link-s1-s2" value="Trunk&#xa;Fa0/1 ↔ Fa0/1&#xa;VLANs 10,20,30,40" style="endArrow=none;html=1;rounded=0;strokeWidth=2;strokeColor=#000000;" edge="1" parent="1" source="switch-s1" target="switch-s2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="450" as="sourcePoint" />
+            <mxPoint x="450" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Link S1 to S3 -->
+        <mxCell id="link-s1-s3" value="Trunk&#xa;Fa0/2 ↔ Fa0/2&#xa;VLANs 10,20,30,40" style="endArrow=none;html=1;rounded=0;strokeWidth=2;strokeColor=#000000;" edge="1" parent="1" source="switch-s1" target="switch-s3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="450" as="sourcePoint" />
+            <mxPoint x="750" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- VLAN Legend Box -->
+        <mxCell id="vlan-legend" value="VLAN Configuration&#xa;&#xa;VLAN 10 - Management (10.10.10.0/27)&#xa;VLAN 20 - Office (10.10.20.0/24)&#xa;VLAN 30 - Dev (10.10.30.0/25)&#xa;VLAN 40 - Guest (10.10.40.0/26)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="50" width="300" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Host examples for S2 -->
+        <mxCell id="pc-office" value="Office PCs&#xa;VLAN 20" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.pc;" vertex="1" parent="1">
+          <mxGeometry x="50" y="650" width="60" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="pc-dev" value="Dev PCs&#xa;VLAN 30" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.pc;" vertex="1" parent="1">
+          <mxGeometry x="150" y="650" width="60" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="pc-guest-s2" value="Guest PCs&#xa;VLAN 40" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.pc;" vertex="1" parent="1">
+          <mxGeometry x="250" y="650" width="60" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Host examples for S3 -->
+        <mxCell id="pc-mgmt" value="Mgmt PCs&#xa;VLAN 10" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.pc;" vertex="1" parent="1">
+          <mxGeometry x="750" y="650" width="60" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="pc-office-s3" value="Office PCs&#xa;VLAN 20" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.pc;" vertex="1" parent="1">
+          <mxGeometry x="850" y="650" width="60" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="pc-guest-s3" value="Guest PCs&#xa;VLAN 40" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.pc;" vertex="1" parent="1">
+          <mxGeometry x="950" y="650" width="60" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Links from S2 to hosts -->
+        <mxCell id="link-s2-office" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="switch-s2" target="pc-office">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="600" as="sourcePoint" />
+            <mxPoint x="300" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="link-s2-dev" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="switch-s2" target="pc-dev">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="600" as="sourcePoint" />
+            <mxPoint x="300" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="link-s2-guest" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="switch-s2" target="pc-guest-s2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="600" as="sourcePoint" />
+            <mxPoint x="300" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Links from S3 to hosts -->
+        <mxCell id="link-s3-mgmt" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="switch-s3" target="pc-mgmt">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="850" y="600" as="sourcePoint" />
+            <mxPoint x="900" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="link-s3-office" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="switch-s3" target="pc-office-s3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="850" y="600" as="sourcePoint" />
+            <mxPoint x="900" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="link-s3-guest" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="switch-s3" target="pc-guest-s3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="850" y="600" as="sourcePoint" />
+            <mxPoint x="900" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

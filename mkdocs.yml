@@ -1,0 +1,34 @@
+site_name: Network Labs - Cisco Lab
+site_description: Cisco Networking Labs and Learning Situations
+site_author: Network Lab Team
+
+nav:
+  - Home: index.md
+  - Labs:
+      - VLAN Router-on-a-Stick: labs/vlan-router-on-stick/index.md
+
+theme:
+  name: readthedocs
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - python
+    - cisco
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - tables
+  - fenced_code
+  - codehilite:
+      guess_lang: false
+  - def_list
+  - footnotes
+  - meta
+
+extra_css: []
+extra_javascript: []
+
+repo_url: https://github.com/jtuttas/Cisco-Lab
+repo_name: jtuttas/Cisco-Lab
