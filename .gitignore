@@ -27,3 +27,10 @@ Thumbs.db
 # Temporary files
 /tmp/
 *.tmp
+
+# Export scripts (keep only render_diagram.py)
+export_drawio_to_png.py
+export_drawio_selenium.py
+export_diagram.js
+export_temp.html
+export_chrome.py
