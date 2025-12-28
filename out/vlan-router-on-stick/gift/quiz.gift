@@ -1,0 +1,211 @@
+// Router-on-a-Stick VLAN Konfiguration - Moodle GIFT Quiz
+// Generiert am: 28. Dezember 2025
+// Thema: VLANs, Trunking, Router-on-a-Stick, Inter-VLAN Routing
+
+// ============================================================
+// Multiple Choice Questions (Single Answer)
+// ============================================================
+
+::vlan-router-on-stick - Q01 - VLAN 10 Zweck::
+Für welchen Zweck ist VLAN 10 in dieser Topologie vorgesehen? {
+=IT/Netz-Administration (Management) #Richtig! VLAN 10 ist für Management-Zwecke.
+~Vertrieb und HR (Office) #Falsch. Das ist VLAN 20.
+~Entwicklung und Produktion (Dev) #Falsch. Das ist VLAN 30.
+~Gäste und externe Mitarbeiter (Guest) #Falsch. Das ist VLAN 40.
+}
+
+::vlan-router-on-stick - Q02 - Router-on-a-Stick Konzept::
+Was ist das Hauptmerkmal der Router-on-a-Stick Konfiguration? {
+=Routing zwischen VLANs über ein einziges physisches Router-Interface mit Subinterfaces #Korrekt! Das ist das Kernkonzept.
+~Jedes VLAN benötigt ein separates physisches Router-Interface #Falsch. Das wäre traditionelles Router-Interface-Setup.
+~Der Router benötigt keine VLAN-Konfiguration #Falsch. Subinterfaces müssen mit dot1Q konfiguriert werden.
+~Switches übernehmen das Routing zwischen VLANs #Falsch. Layer-2-Switches können nicht routen.
+}
+
+::vlan-router-on-stick - Q03 - VLAN 20 Subnetzmaske::
+Welche Subnetzmaske wird für VLAN 20 (Office) verwendet? {
+=255.255.255.0 #Richtig! VLAN 20 verwendet /24.
+~255.255.255.224 #Falsch. Das ist die Maske für VLAN 10 (/27).
+~255.255.255.128 #Falsch. Das ist die Maske für VLAN 30 (/25).
+~255.255.255.192 #Falsch. Das ist die Maske für VLAN 40 (/26).
+}
+
+::vlan-router-on-stick - Q04 - Trunk Befehl::
+Welcher Befehl konfiguriert einen Switch-Port als Trunk-Port? {
+=switchport mode trunk #Korrekt!
+~switchport mode access #Falsch. Das konfiguriert einen Access-Port.
+~switchport trunk mode #Falsch. Falsche Befehlssyntax.
+~trunk mode enable #Falsch. Kein gültiger IOS-Befehl.
+}
+
+::vlan-router-on-stick - Q05 - Subinterface Encapsulation::
+Welcher Befehl wird verwendet, um dot1Q VLAN-Tagging auf einem Subinterface zu konfigurieren? {
+=encapsulation dot1Q <vlan-id> #Richtig!
+~vlan encapsulation <vlan-id> #Falsch. Falsche Syntax.
+~switchport trunk encapsulation dot1q #Falsch. Das ist ein Switch-Befehl.
+~ip vlan <vlan-id> #Falsch. Kein gültiger Befehl.
+}
+
+// ============================================================
+// Multiple Choice Questions (Multiple Answers)
+// ============================================================
+
+::vlan-router-on-stick - Q06 - Trunk Allowed VLANs::
+Welche VLANs werden auf den Trunk-Verbindungen in dieser Topologie erlaubt? (Wählen Sie alle zutreffenden.) {
+~%25%10 #Richtig! VLAN 10 ist erlaubt.
+~%25%20 #Richtig! VLAN 20 ist erlaubt.
+~%25%30 #Richtig! VLAN 30 ist erlaubt.
+~%25%40 #Richtig! VLAN 40 ist erlaubt.
+~%-100%1 #Falsch. VLAN 1 ist zwar Native VLAN, aber nicht explizit in der allowed-Liste.
+~%-100%99 #Falsch. VLAN 99 existiert in dieser Konfiguration nicht.
+}
+
+::vlan-router-on-stick - Q07 - Switch Rollen::
+Welche Aussagen über die Switch-Rollen in dieser Topologie sind korrekt? (Wählen Sie alle zutreffenden.) {
+~%50%S1 ist der Core/Distribution Switch #Richtig! S1 ist der zentrale Switch.
+~%50%S2 und S3 sind Access Switches #Richtig! Sie verbinden Endgeräte.
+~%-100%Alle Switches haben die gleiche Rolle #Falsch. Hierarchisches Design.
+~%-100%S2 ist ein Core Switch #Falsch. S2 ist ein Access Switch.
+}
+
+// ============================================================
+// True/False Questions
+// ============================================================
+
+::vlan-router-on-stick - Q08 - Native VLAN::
+In dieser Konfiguration bleibt das Native VLAN auf VLAN 1 (Standard). {T #Korrekt! Der Text erwähnt dies explizit.}
+
+::vlan-router-on-stick - Q09 - Inter-VLAN Routing::
+Geräte in verschiedenen VLANs können ohne Router nicht miteinander kommunizieren. {T #Richtig! Layer-2-Switches können nicht zwischen VLANs routen.}
+
+::vlan-router-on-stick - Q10 - Hauptinterface Shutdown::
+Das physische Hauptinterface G0/0/0 auf dem Router muss mit "shutdown" deaktiviert werden, damit die Subinterfaces funktionieren. {F #Falsch! Das Gegenteil ist richtig - es muss mit "no shutdown" aktiviert werden.}
+
+::vlan-router-on-stick - Q11 - Access Port Multiple VLANs::
+Ein Access-Port kann gleichzeitig mehreren VLANs zugeordnet sein. {F #Falsch! Ein Access-Port gehört immer nur zu einem VLAN. Trunk-Ports transportieren mehrere VLANs.}
+
+::vlan-router-on-stick - Q12 - VLAN Subnetzgrößen::
+Alle VLANs in dieser Topologie verwenden die gleiche Subnetzgröße. {F #Falsch! Unterschiedliche Subnetzgrößen: /27, /24, /25, /26}
+
+// ============================================================
+// Short Answer Questions
+// ============================================================
+
+::vlan-router-on-stick - Q13 - Gateway VLAN 10::
+Wie lautet die Gateway-IP-Adresse für VLAN 10 (Management)? {
+=10.10.10.1 #Korrekt!
+=10.10.10.1/27 #Auch richtig mit CIDR-Notation.
+}
+
+::vlan-router-on-stick - Q14 - Gateway VLAN 20::
+Wie lautet die Gateway-IP-Adresse für VLAN 20 (Office)? {
+=10.10.20.1 #Korrekt!
+=10.10.20.1/24 #Auch richtig mit CIDR-Notation.
+}
+
+::vlan-router-on-stick - Q15 - VLAN Name Dev::
+Wie lautet die VLAN-ID für das "Dev" (Entwicklung) VLAN? {
+=30 #Richtig!
+=%50%VLAN 30 #Teilweise richtig - nur die Zahl wird benötigt.
+}
+
+::vlan-router-on-stick - Q16 - Show VLAN Befehl::
+Welcher Show-Befehl zeigt die VLAN-Konfiguration auf einem Switch an? {
+=show vlan brief #Korrekt!
+=show vlan #Auch richtig, aber weniger übersichtlich.
+=sh vlan brief #Auch korrekt (abgekürzte Form).
+}
+
+::vlan-router-on-stick - Q17 - Show Trunk Befehl::
+Welcher Show-Befehl zeigt den Status der Trunk-Ports auf einem Switch an? {
+=show interfaces trunk #Korrekt!
+=sh int trunk #Auch richtig (abgekürzte Form).
+=show trunk #Teilweise akzeptiert, aber nicht vollständig.
+}
+
+::vlan-router-on-stick - Q18 - Routername::
+Wie lautet der Hostname des Routers in dieser Übung? {
+=R-Kiesel #Korrekt!
+}
+
+// ============================================================
+// Matching Questions
+// ============================================================
+
+::vlan-router-on-stick - Q19 - VLAN zu Netzwerk Matching::
+Ordnen Sie die VLANs ihren entsprechenden Netzwerken zu. {
+=VLAN 10 -> 10.10.10.0/27
+=VLAN 20 -> 10.10.20.0/24
+=VLAN 30 -> 10.10.30.0/25
+=VLAN 40 -> 10.10.40.0/26
+}
+
+::vlan-router-on-stick - Q20 - VLAN zu Zweck Matching::
+Ordnen Sie die VLANs ihren Verwendungszwecken zu. {
+=VLAN 10 -> Management (IT/Netz-Admin)
+=VLAN 20 -> Office (Vertrieb/HR/Backoffice)
+=VLAN 30 -> Dev (Entwicklung/Produktion)
+=VLAN 40 -> Guest (Gäste/extern)
+}
+
+::vlan-router-on-stick - Q21 - Interface zu VLAN Gateway Matching::
+Ordnen Sie die Router-Subinterfaces ihren IP-Adressen zu. {
+=G0/0/0.10 -> 10.10.10.1
+=G0/0/0.20 -> 10.10.20.1
+=G0/0/0.30 -> 10.10.30.1
+=G0/0/0.40 -> 10.10.40.1
+}
+
+::vlan-router-on-stick - Q22 - Switch zu Rolle Matching::
+Ordnen Sie die Switches ihren Rollen zu. {
+=S1 -> Core/Distribution Switch
+=S2 -> Access Switch Etage 2
+=S3 -> Access Switch Etage 3
+}
+
+// ============================================================
+// Numerical Questions
+// ============================================================
+
+::vlan-router-on-stick - Q23 - Anzahl Hosts VLAN 10::
+Wie viele nutzbare Host-Adressen bietet VLAN 10 (10.10.10.0/27)? {
+#Die Antwort ist 30 (2^5 - 2 \= 32 - 2 \= 30)
+=%100%30:0 #Genau richtig!
+=%50%32:0 #Teilweise - das ist die Gesamtzahl inkl. Netz- und Broadcast-Adresse.
+}
+
+::vlan-router-on-stick - Q24 - Anzahl Hosts VLAN 20::
+Wie viele nutzbare Host-Adressen bietet VLAN 20 (10.10.20.0/24)? {
+#Die Antwort ist 254 (2^8 - 2 \= 256 - 2 \= 254)
+=%100%254:0 #Genau richtig!
+=%50%256:0 #Teilweise - das ist die Gesamtzahl inkl. Netz- und Broadcast-Adresse.
+}
+
+::vlan-router-on-stick - Q25 - Anzahl VLANs::
+Wie viele VLANs werden in dieser Topologie konfiguriert (ohne VLAN 1)? {
+#Die Antwort ist 4 (VLANs 10, 20, 30, 40)
+=%100%4:0 #Genau richtig!
+}
+
+// ============================================================
+// Essay/Open Questions (für manuelle Bewertung)
+// ============================================================
+
+::vlan-router-on-stick - Q26 - Troubleshooting Szenario::
+Ein Benutzer in VLAN 20 (IP\: 10.10.20.50) kann nicht mit einem Benutzer in VLAN 30 (IP\: 10.10.30.50) kommunizieren. Welche Schritte würden Sie zur Fehlersuche durchführen? Nennen Sie mindestens vier Prüfpunkte. {
+#Erwartete Antwortpunkte\: 1) Gateway-Konfiguration auf PCs prüfen, 2) Router Subinterface Status prüfen (show ip int brief), 3) Trunk-Konfiguration prüfen (show interfaces trunk), 4) Routing-Tabelle prüfen (show ip route), 5) VLAN-Zuordnung der Ports prüfen (show vlan brief)
+}
+
+::vlan-router-on-stick - Q27 - VLAN Design Begründung::
+Erklären Sie, warum in dieser Topologie unterschiedliche Subnetzgrößen für die verschiedenen VLANs verwendet werden. Welche Vorteile bietet dieser Ansatz? {
+#Erwartete Antwort\: Unterschiedliche Subnetzgrößen ermöglichen eine effiziente IP-Adressverwaltung. Größere VLANs (wie Office mit /24) erhalten mehr Adressen für viele Benutzer, während kleinere VLANs (wie Management mit /27) Adressen sparen. Dies folgt dem Prinzip der variablen Subnetzmaskierung (VLSM) und optimiert die Nutzung des IP-Adressraums.
+}
+
+::vlan-router-on-stick - Q28 - Router-on-a-Stick Vorteile::
+Nennen Sie zwei Vorteile und zwei Nachteile der Router-on-a-Stick Konfiguration im Vergleich zu einer Konfiguration mit separaten Router-Interfaces pro VLAN. {
+#Erwartete Antwort - Vorteile\: 1) Nur ein physisches Interface benötigt, 2) Kostengünstiger (weniger Ports/Hardware). Nachteile\: 1) Potentieller Flaschenhals bei hohem Datenverkehr zwischen VLANs, 2) Single Point of Failure am Trunk-Link
+}
+
+// ============================================================
+// Ende des Quiz
+// ============================================================

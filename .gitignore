@@ -1,0 +1,36 @@
+# Build artifacts and temporary files
+*.log
+*.tmp
+/tmp/
+
+# LaTeX intermediate files
+*.aux
+*.out
+*.toc
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+
+# Node modules (if any)
+node_modules/
+package-lock.json
