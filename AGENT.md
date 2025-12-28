@@ -324,3 +324,6 @@ Ordne Interface und IP-Adresse korrekt zu. {
 - Fokus: Training, Konfiguration, Verifikation, Troubleshooting.
 
 ---
+
+**Abschließend wird das README.md ergänzt oder erstellt**
+
