@@ -107,12 +107,13 @@ Warum muss das physische Interface G0/0/0 mit "no shutdown" aktiviert werden, au
 }
 
 ::VLAN Advanced - VLAN Erstellung::
-In welcher Reihenfolge müssen die folgenden Schritte ausgeführt werden, um ein funktionierendes VLAN zu erstellen? (1\=Erster Schritt)
+Welche Schritte sind erforderlich, um ein funktionierendes VLAN einzurichten? Wählen Sie alle zutreffenden Antworten.
 {
-=1. VLAN auf Switch erstellen (vlan 10)
-=2. VLAN benennen (name Verwaltung)
-=3. Port dem VLAN zuweisen (switchport access vlan 10)
-=4. Router-Subinterface für VLAN konfigurieren
+~%25%VLAN auf Switch erstellen (vlan 10)
+~%25%VLAN benennen (name Verwaltung)
+~%25%Port dem VLAN zuweisen (switchport access vlan 10)
+~%25%Router-Subinterface für VLAN konfigurieren
+~%-100%Switch neu starten
 }
 
 ::VLAN Advanced - Trunk Konfiguration Befehl::

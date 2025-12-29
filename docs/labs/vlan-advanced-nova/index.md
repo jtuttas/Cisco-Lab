@@ -64,7 +64,7 @@ Nach Abschluss dieser Übung können Sie:
 - S1 Fa0/1-2 → PC-Verwaltung (Access VLAN 10)
 - S1 Fa0/3-4 → PC-Entwicklung (Access VLAN 20)
 - S1 Fa0/5-6 → PC-Vertrieb (Access VLAN 30)
-- S1 Fa0/7 → IP-Telefon (Access VLAN 20 + Voice VLAN 40)
+- S1 Fa0/7 → IP-Telefon (Access VLAN 20 für PC dahinter + Voice VLAN 40 für Telefon)
 
 **Router-Subinterfaces:**
 - G0/0/0.10 → VLAN 10 (10.10.10.1/25)
@@ -280,21 +280,27 @@ ip default-gateway 10.10.99.1
 
 ```cisco
 ! Ungenutzte Ports deaktivieren (Beispiel: Fa0/8-24, Gi0/2)
+! Best Practice: Dediziertes "Unused" VLAN für Sicherheit
+vlan 999
+ name Unused
+
 interface range FastEthernet0/8 - 24
  switchport mode access
- switchport access vlan 30
+ switchport access vlan 999
  shutdown
  description Unused - Security
 
 interface GigabitEthernet0/2
  switchport mode access
- switchport access vlan 30
+ switchport access vlan 999
  shutdown
  description Unused - Security
 
 end
 write memory
 ```
+
+**Hinweis:** Ungenutzte Ports sollten in ein dediziertes VLAN (z.B. VLAN 999) ohne Routing verschoben werden, nicht in ein produktives VLAN.
 
 ### Aufgabe 4: Endgeräte-Konfiguration
 
