@@ -21,6 +21,27 @@ Eine umfassende Übung zur Implementierung von VLANs und Inter-VLAN Routing mit 
 - [Moodle GIFT Quiz](labs/vlan-router-on-stick/quiz.gift)
 - [Netzwerk-Diagramm](labs/vlan-router-on-stick/diagram.png)
 
+---
+
+### VLAN Router-on-a-Stick - Erweiterte Konfiguration (R-Nova)
+
+Eine fortgeschrittene VLAN-Übung mit erweiterten Sicherheitsfeatures, Voice VLAN und Best Practices.
+
+**Schwerpunkte:**
+- Erweiterte VLAN-Konfiguration mit unterschiedlichen Subnetzgrößen
+- Sicherheits-Best-Practices (separates Native VLAN, Passwort-Verschlüsselung)
+- Voice VLAN mit QoS (Quality of Service)
+- Management VLAN (SVI) für Switch-Administration
+- Spanning Tree PortFast
+- Port Security und ungenutzte Ports
+- Umfassende Verifikation und Troubleshooting
+
+**Ressourcen:**
+- [Lab-Anleitung (Online)](labs/vlan-advanced-nova/index.md)
+- [Lab-Anleitung (PDF)](labs/vlan-advanced-nova/lab.pdf)
+- [Moodle GIFT Quiz](labs/vlan-advanced-nova/quiz.gift)
+- [Netzwerk-Diagramm](labs/vlan-advanced-nova/diagram.png)
+
 ## Über diese Labs
 
 Diese Labs wurden entwickelt für:
