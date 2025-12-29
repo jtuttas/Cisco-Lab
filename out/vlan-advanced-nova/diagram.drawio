@@ -1,0 +1,116 @@
+<mxfile host="app.diagrams.net" modified="2025-12-29T08:00:00.000Z" agent="5.0" version="21.6.5">
+  <diagram name="VLAN Advanced Router-on-a-Stick - R-Nova" id="network-topology-advanced">
+    <mxGraphModel dx="1422" dy="894" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Router R-Nova (Cisco 4331) -->
+        <mxCell id="router-nova" value="R-Nova&#xa;Cisco 4331" style="shape=mxgraph.cisco.routers.router;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="600" y="120" width="78" height="53" as="geometry" />
+        </mxCell>
+        
+        <!-- Switch S1 (Cisco 2960) -->
+        <mxCell id="switch-s1" value="S1&#xa;Cisco 2960" style="shape=mxgraph.cisco.switches.workgroup_switch;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="588" y="320" width="101" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- PC Verwaltung (VLAN 10) -->
+        <mxCell id="pc-verwaltung-1" value="PC-Verwaltung&#xa;VLAN 10&#xa;10.10.10.10/25" style="shape=mxgraph.cisco.computers_and_peripherals.pc;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="200" y="500" width="78" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="pc-verwaltung-2" value="PC-Verwaltung&#xa;VLAN 10" style="shape=mxgraph.cisco.computers_and_peripherals.pc;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="320" y="500" width="78" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- PC Entwicklung (VLAN 20) -->
+        <mxCell id="pc-entwicklung-1" value="PC-Entwicklung&#xa;VLAN 20&#xa;10.10.20.10/26" style="shape=mxgraph.cisco.computers_and_peripherals.pc;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="440" y="500" width="78" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="pc-entwicklung-2" value="PC-Entwicklung&#xa;VLAN 20" style="shape=mxgraph.cisco.computers_and_peripherals.pc;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="560" y="500" width="78" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- PC Vertrieb (VLAN 30) -->
+        <mxCell id="pc-vertrieb-1" value="PC-Vertrieb&#xa;VLAN 30&#xa;10.10.30.10/27" style="shape=mxgraph.cisco.computers_and_peripherals.pc;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="680" y="500" width="78" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="pc-vertrieb-2" value="PC-Vertrieb&#xa;VLAN 30" style="shape=mxgraph.cisco.computers_and_peripherals.pc;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="800" y="500" width="78" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- IP Phone (VLAN 40 Voice) -->
+        <mxCell id="ip-phone-1" value="IP-Telefon&#xa;VLAN 40 Voice&#xa;10.10.40.0/28" style="shape=mxgraph.cisco.computers_and_peripherals.ip_phone;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="920" y="500" width="68" height="68" as="geometry" />
+        </mxCell>
+        
+        <!-- Connection: Router to S1 (Trunk) -->
+        <mxCell id="link-router-s1" value="G0/0/0 - Gi0/1&#xa;802.1Q Trunk&#xa;VLANs: 10,20,30,40,88,99&#xa;Native VLAN 88" style="endArrow=none;html=1;rounded=0;strokeWidth=3;strokeColor=#0066CC;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="router-nova" target="switch-s1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="639" y="200" as="sourcePoint" />
+            <mxPoint x="639" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Connection: S1 to PC Verwaltung 1 (Access VLAN 10) -->
+        <mxCell id="link-s1-verwaltung1" value="Fa0/1&#xa;Access VLAN 10" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#00AA00;dashed=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="switch-s1" target="pc-verwaltung-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Connection: S1 to PC Verwaltung 2 (Access VLAN 10) -->
+        <mxCell id="link-s1-verwaltung2" value="Fa0/2&#xa;Access VLAN 10" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#00AA00;dashed=1;exitX=0.3;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="switch-s1" target="pc-verwaltung-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Connection: S1 to PC Entwicklung 1 (Access VLAN 20) -->
+        <mxCell id="link-s1-entwicklung1" value="Fa0/3&#xa;Access VLAN 20" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#FF6600;dashed=1;exitX=0.4;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="switch-s1" target="pc-entwicklung-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Connection: S1 to PC Entwicklung 2 (Access VLAN 20) -->
+        <mxCell id="link-s1-entwicklung2" value="Fa0/4&#xa;Access VLAN 20" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#FF6600;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="switch-s1" target="pc-entwicklung-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Connection: S1 to PC Vertrieb 1 (Access VLAN 30) -->
+        <mxCell id="link-s1-vertrieb1" value="Fa0/5&#xa;Access VLAN 30" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#9900CC;dashed=1;exitX=0.6;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="switch-s1" target="pc-vertrieb-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Connection: S1 to PC Vertrieb 2 (Access VLAN 30) -->
+        <mxCell id="link-s1-vertrieb2" value="Fa0/6&#xa;Access VLAN 30" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#9900CC;dashed=1;exitX=0.7;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="switch-s1" target="pc-vertrieb-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Connection: S1 to IP Phone (Access VLAN 20 + Voice VLAN 40) -->
+        <mxCell id="link-s1-phone" value="Fa0/7&#xa;Access VLAN 20&#xa;Voice VLAN 40" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#CC0000;dashed=1;exitX=0.8;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="switch-s1" target="ip-phone-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- VLAN Legend Box -->
+        <mxCell id="vlan-legend" value="&lt;b&gt;VLANs und Subnetze:&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;VLAN 10 - Verwaltung&lt;/b&gt;&lt;br&gt;Netz: 10.10.10.0/25&lt;br&gt;Gateway: 10.10.10.1&lt;br&gt;&lt;br&gt;&lt;b&gt;VLAN 20 - Entwicklung&lt;/b&gt;&lt;br&gt;Netz: 10.10.20.0/26&lt;br&gt;Gateway: 10.10.20.1&lt;br&gt;&lt;br&gt;&lt;b&gt;VLAN 30 - Vertrieb&lt;/b&gt;&lt;br&gt;Netz: 10.10.30.0/27&lt;br&gt;Gateway: 10.10.30.1&lt;br&gt;&lt;br&gt;&lt;b&gt;VLAN 40 - Voice&lt;/b&gt;&lt;br&gt;Netz: 10.10.40.0/28&lt;br&gt;Gateway: 10.10.40.1&lt;br&gt;&lt;br&gt;&lt;b&gt;VLAN 99 - Management&lt;/b&gt;&lt;br&gt;Netz: 10.10.99.0/29&lt;br&gt;SVI: 10.10.99.2&lt;br&gt;&lt;br&gt;&lt;b&gt;VLAN 88 - Native&lt;/b&gt;&lt;br&gt;Keine IP-Adresse" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacing=10;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="280" height="320" as="geometry" />
+        </mxCell>
+        
+        <!-- Security Features Box -->
+        <mxCell id="security-features" value="&lt;b&gt;Sicherheitsfeatures:&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Passwörter verschlüsselt&lt;br&gt;• Enable Secret: class&lt;br&gt;• Console &amp;amp; VTY: cisco&lt;br&gt;• Banner MOTD aktiv&lt;br&gt;• Native VLAN 88 (nicht Default)&lt;br&gt;• Trunk erlaubt nur benötigte VLANs&lt;br&gt;• Spanning Tree PortFast&lt;br&gt;• Voice VLAN (QoS Trust COS)&lt;br&gt;• Ungenutzte Ports: shutdown" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacing=10;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="120" width="280" height="220" as="geometry" />
+        </mxCell>
+        
+        <!-- Router Subinterfaces Info Box -->
+        <mxCell id="router-info" value="&lt;b&gt;Router R-Nova Subinterfaces:&lt;/b&gt;&lt;br&gt;&lt;br&gt;G0/0/0.10 - VLAN 10 (10.10.10.1)&lt;br&gt;G0/0/0.20 - VLAN 20 (10.10.20.1)&lt;br&gt;G0/0/0.30 - VLAN 30 (10.10.30.1)&lt;br&gt;G0/0/0.40 - VLAN 40 (10.10.40.1)&lt;br&gt;G0/0/0.99 - VLAN 99 (10.10.99.1)&lt;br&gt;G0/0/0.88 - Native VLAN (keine IP)&lt;br&gt;&lt;br&gt;G0/0/1 - WAN-Reserve (frei)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacing=10;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="360" width="280" height="180" as="geometry" />
+        </mxCell>
+        
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;VLAN Router-on-a-Stick - Erweiterte Konfiguration mit R-Nova&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="40" width="600" height="40" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

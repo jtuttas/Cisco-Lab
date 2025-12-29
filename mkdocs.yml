@@ -11,6 +11,7 @@ nav:
   - Home: index.md
   - Labs:
       - VLAN Router-on-a-Stick: labs/vlan-router-on-stick/index.md
+      - VLAN Advanced - R-Nova: labs/vlan-advanced-nova/index.md
 
 # Theme
 theme:

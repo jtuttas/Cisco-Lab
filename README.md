@@ -32,6 +32,35 @@ Die Labs sind auch online verfügbar: **[https://jtuttas.github.io/Cisco-Lab/](h
 - 3x Switches (1x Core/Distribution, 2x Access)
 - 4 VLANs (Management, Office, Dev, Guest)
 - 6x PCs in verschiedenen VLANs
+
+---
+
+### VLAN Router-on-a-Stick - Erweiterte Konfiguration (R-Nova)
+
+**Beschreibung:** Eine fortgeschrittene VLAN-Übung mit erweiterten Sicherheitsfeatures, Voice VLAN, und Best Practices. Diese Übung behandelt die Implementierung von separatem Native VLAN, Management VLAN, Voice VLAN mit QoS, und verschiedenen Subnetzgrößen.
+
+**Themen:**
+- Erweiterte VLAN-Konfiguration mit unterschiedlichen Subnetzgrößen
+- Sicherheits-Best-Practices (separates Native VLAN, Passwort-Verschlüsselung)
+- Voice VLAN mit QoS (Quality of Service)
+- Management VLAN (SVI) für Switch-Administration
+- Spanning Tree PortFast
+- Port Security und ungenutzte Ports
+- Umfassende Verifikation und Troubleshooting
+
+**Ressourcen:**
+- 📖 [Lab-Anleitung (Online)](https://jtuttas.github.io/Cisco-Lab/labs/vlan-advanced-nova/)
+- 📄 [Lab-Anleitung (PDF)](out/vlan-advanced-nova/lab.pdf)
+- 🎯 [Moodle GIFT Quiz](out/vlan-advanced-nova/gift/quiz.gift)
+- 🖼️ [Netzwerk-Diagramm (PNG)](out/vlan-advanced-nova/diagram.png)
+- 📐 [Netzwerk-Diagramm (Draw.io)](out/vlan-advanced-nova/diagram.drawio)
+
+**Netzwerk-Topologie:**
+- 1x Cisco 4331 Router (R-Nova)
+- 1x Cisco 2960 Switch
+- 6 VLANs (Verwaltung, Entwicklung, Vertrieb, Voice, Native, Management)
+- 6x PCs + 1x IP-Telefon
+- Erweiterte Sicherheitsfeatures und QoS
 <!-- LABS:END -->
 
 ## 🚀 Schnellstart
