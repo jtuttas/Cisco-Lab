@@ -1,6 +1,6 @@
-# Cisco Network Labs
+# Cisco Network Labs!
 
-Willkommen zum Cisco Network Labs Repository! Dieses Repository enthält praxisorientierte Cisco Netzwerk-Übungen mit vollständiger Dokumentation, Diagrammen und Testaufgaben.
+Willkommen zum Cisco Network Labs Repository! Dieses Repository enthält praxisorientierte Cisco Netzwerk-Übungen mit vollständiger Dokumentation, Diagrammen und Testaufgaben!
 
 ## 🌐 GitHub Pages
 
