@@ -21,7 +21,7 @@ Die Labs sind auch online verfügbar: **[https://jtuttas.github.io/Cisco-Lab/](h
 - Netzwerk-Verifizierung und Troubleshooting
 
 **Ressourcen:**
-- 📖 [Lab-Anleitung (Online)](https://jtuttas.github.io/Cisco-Lab/docs/labs/vlan-router-on-stick/)
+- 📖 [Lab-Anleitung (Online)](https://jtuttas.github.io/Cisco-Lab/labs/vlan-router-on-stick/)
 - 📄 [Lab-Anleitung (PDF)](out/vlan-router-on-stick/lab.pdf)
 - 🎯 [Moodle GIFT Quiz](out/vlan-router-on-stick/gift/quiz.gift)
 - 🖼️ [Netzwerk-Diagramm (PNG)](out/vlan-router-on-stick/diagram.png)
@@ -49,7 +49,7 @@ Die Labs sind auch online verfügbar: **[https://jtuttas.github.io/Cisco-Lab/](h
 - Umfassende Verifikation und Troubleshooting
 
 **Ressourcen:**
-- 📖 [Lab-Anleitung (Online)](https://jtuttas.github.io/Cisco-Lab/docs/labs/vlan-advanced-nova/)
+- 📖 [Lab-Anleitung (Online)](https://jtuttas.github.io/Cisco-Lab/labs/vlan-advanced-nova/)
 - 📄 [Lab-Anleitung (PDF)](out/vlan-advanced-nova/lab.pdf)
 - 🎯 [Moodle GIFT Quiz](out/vlan-advanced-nova/gift/quiz.gift)
 - 🖼️ [Netzwerk-Diagramm (PNG)](out/vlan-advanced-nova/diagram.png)
