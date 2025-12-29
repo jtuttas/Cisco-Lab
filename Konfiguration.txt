@@ -1,0 +1,173 @@
+2a) Automatische Konfiguration (Copy & Paste)
+Hinweis: Diese Blöcke im Packet Tracer jeweils in die CLI der Geräte einfügen. Namen und Ports ggf. anpassen.
+
+Router Cisco 4331 (z. B. R-Nova)
+          
+enable
+conf t
+hostname R-Nova
+no ip domain-lookup
+enable secret class
+line con 0
+ password cisco
+ login
+line vty 0 4
+ password cisco
+ login
+service password-encryption
+banner motd $ Authorized Users Only! $
+
+interface GigabitEthernet0/0/0
+ no shutdown
+
+interface GigabitEthernet0/0/0.10
+ description VLAN10 Verwaltung
+ encapsulation dot1Q 10
+ ip address 10.10.10.1 255.255.255.128
+
+interface GigabitEthernet0/0/0.20
+ description VLAN20 Entwicklung
+ encapsulation dot1Q 20
+ ip address 10.10.20.1 255.255.255.192
+
+interface GigabitEthernet0/0/0.30
+ description VLAN30 Vertrieb
+ encapsulation dot1Q 30
+ ip address 10.10.30.1 255.255.255.224
+
+interface GigabitEthernet0/0/0.40
+ description VLAN40 Voice
+ encapsulation dot1Q 40
+ ip address 10.10.40.1 255.255.255.240
+
+interface GigabitEthernet0/0/0.99
+ description VLAN99 Management
+ encapsulation dot1Q 99
+ ip address 10.10.99.1 255.255.255.248
+
+interface GigabitEthernet0/0/0.88
+ description Native VLAN
+ encapsulation dot1Q 88 native
+ ! keine IP auf Native
+
+interface GigabitEthernet0/0/1
+ ! frei / WAN-Reserve
+ no shutdown
+
+end
+wr
+show ip interface brief
+
+        
+Switch S1 (Cisco 2960)
+          
+enable
+conf t
+hostname S1
+no ip domain-lookup
+enable secret class
+line con 0
+ password cisco
+ login
+line vty 0 15
+ password cisco
+ login
+service password-encryption
+banner motd $ Authorized Users Only! $
+
+vlan 10
+ name Verwaltung
+vlan 20
+ name Entwicklung
+vlan 30
+ name Vertrieb
+vlan 40
+ name Voice
+vlan 88
+ name Native
+vlan 99
+ name Management
+
+interface range fa0/1 - 2
+ switchport mode access
+ switchport access vlan 10
+ spanning-tree portfast
+
+interface range fa0/3 - 4
+ switchport mode access
+ switchport access vlan 20
+ spanning-tree portfast
+
+interface range fa0/5 - 6
+ switchport mode access
+ switchport access vlan 30
+ spanning-tree portfast
+
+interface fa0/7
+ switchport mode access
+ switchport access vlan 20
+ mls qos trust cos
+ switchport voice vlan 40
+ spanning-tree portfast
+
+interface gigabitEthernet0/1
+ description Trunk zu R-Nova G0/0/0
+ switchport mode trunk
+ switchport trunk native vlan 88
+ switchport trunk allowed vlan 10,20,30,40,88,99
+
+interface vlan 99
+ description Mgmt-SVI
+ ip address 10.10.99.2 255.255.255.248
+ no shutdown
+exit
+ip default-gateway 10.10.99.1
+
+! ungenutzte Ports sichern (Beispiel)
+interface range fa0/8 - 24 , gi0/2
+ switchport mode access
+ switchport access vlan 30
+ shutdown
+
+end
+wr
+show vlan brief
+show interfaces trunk
+
+        
+Endgeräte (Beispiele für manuelle IP-Einträge in den PCs)
+
+PC-Verwaltung (VLAN10): 10.10.10.10 / 255.255.255.128, GW 10.10.10.1
+PC-Entwicklung (VLAN20): 10.10.20.10 / 255.255.255.192, GW 10.10.20.1
+PC-Vertrieb (VLAN30): 10.10.30.10 / 255.255.255.224, GW 10.10.30.1
+IP-Telefon (Voice): via DHCP/Static im 10.10.40.0/28 (optional)
+Switch Mgmt (SVI): 10.10.99.2/29, GW 10.10.99.1 (bereits konfiguriert)
+Verifikation
+
+S1: show vlan brief | show interfaces trunk
+R-Nova: show ip interface brief
+Tests: Ping innerhalb VLAN, Ping über VLAN-Grenzen (über Router), Zugriff auf S1-Management 10.10.99.2
+Typische Stolperfallen:
+
+Native VLAN-Mismatch auf dem Trunk.
+Subinterface fehlt oder falsche VLAN-ID (encapsulation dot1Q).
+Default-Gateway an PCs vergessen/vertippt.
+VLAN nicht auf beiden Seiten vorhanden/zugewiesen.
+3) Varianten-Prompts für unterschiedliche Unterrichtszwecke
+A) Fokus: Verständnis von VLANs und Portzuordnung (kurze Arbeitsaufträge)
+Lege auf S1 die VLANs 10/20/30/99/88 an und benenne sie passend.
+Ordne Fa0/1–2 VLAN10, Fa0/3–4 VLAN20, Fa0/5–6 VLAN30 zu.
+Richte SVI VLAN99 mit 10.10.99.2/29 und ip default-gateway 10.10.99.1 ein.
+Teste: PCs im gleichen VLAN können pingen; zwischen VLANs nicht (noch kein Routing).
+Dokumentiere show vlan brief mit Portzuordnung.
+B) Anspruchsvollere Lernsituation (AP2-Niveau)
+Erweiterung: Mehrere Switches, saubere VLAN-Doku, Begründung der Struktur (Sicherheit/Organisation).
+
+Topologie: R-Nova (G0/0/0 zu S1 G0/1; G0/0/1 frei), S1 (Zentrale), S2 (Etage 2, Trunk S1 G0/2 — S2 G0/1).
+Aufgabe (prüfungsnah):
+Erstellen und dokumentieren Sie VLANs 10/20/30/40/88/99 (Tabelle mit Zweck, Maske, Gateway).
+Konfigurieren Sie auf S1/S2 identische VLANs; Access-Ports gemäß Abteilungsplan; alle ungenutzten Ports ins „Parkhaus“-VLAN (z. B. VLAN7) und shutdown.
+Trunks S1–S2: statisch, Native VLAN 88, Allowed 10,20,30,40,99,88; DTP deaktivieren (switchport nonegotiate).
+Router-on-a-Stick auf R-Nova (Subinterfaces .10/.20/.30/.40/.99 und Native .88); IPs gemäß Doku.
+Sicherheits-/Organisationsbegründung (schriftlich, Stichpunkte): Warum VLAN-Trennung? Welche Risiken senkt Native-VLAN-Änderung? Warum eigenes Management-VLAN?
+Nachweis: show interfaces trunk (beide Switches), show vlan brief, show ip interface brief, erfolgreiche Pings: intra-VLAN und inter-VLAN.
