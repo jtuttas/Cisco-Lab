@@ -1,0 +1,356 @@
+// VLAN Router-on-a-Stick - Erweiterte Konfiguration - Moodle GIFT Quiz
+// Generiert für das Lab "vlan-advanced-nova"
+
+$CATEGORY: Cisco VLAN Advanced/Grundlagen
+
+::VLAN Advanced - Zweck der VLAN-Segmentierung::
+Welche der folgenden Aussagen beschreiben Vorteile der VLAN-Segmentierung korrekt? Wählen Sie alle zutreffenden Antworten.
+{
+~%25%Erhöhte Netzwerksicherheit durch logische Trennung von Datenverkehr
+~%25%Reduzierung von Broadcast-Domains
+~%25%Flexiblere Netzwerk-Organisation unabhängig von physischer Verkabelung
+~%25%Bessere Bandbreitennutzung durch Verkehrsisolierung
+~%-100%Automatische Verschlüsselung des Datenverkehrs
+~%-100%Erhöhung der physischen Netzwerkgeschwindigkeit
+}
+
+::VLAN Advanced - Native VLAN Sicherheit::
+Warum sollte das Native VLAN vom Default VLAN 1 geändert werden?
+{
+=Um VLAN-Hopping-Angriffe zu erschweren und die Sicherheit zu erhöhen
+~Um die Netzwerkgeschwindigkeit zu verbessern
+~Um mehr VLANs nutzen zu können
+~Um die Konfiguration zu vereinfachen
+}
+
+::VLAN Advanced - Router-on-a-Stick Prinzip::
+Was ist das grundlegende Prinzip von Router-on-a-Stick?
+{
+=Ein einzelnes physisches Router-Interface nutzt Subinterfaces für mehrere VLANs
+~Mehrere Router werden gestapelt und gemeinsam genutzt
+~Der Router wird direkt auf dem Switch installiert
+~Jedes VLAN benötigt ein eigenes physisches Router-Interface
+}
+
+::VLAN Advanced - Subinterface Encapsulation::
+Welcher Befehl aktiviert 802.1Q Tagging auf einem Subinterface für VLAN 10?
+{
+=encapsulation dot1Q 10
+~encapsulation vlan 10
+~switchport mode trunk vlan 10
+~vlan encapsulation 10
+}
+
+::VLAN Advanced - Native VLAN Konfiguration::
+Wie wird auf einem Router-Subinterface das Native VLAN 88 konfiguriert?
+{
+=interface G0/0/0.88\nencapsulation dot1Q 88 native
+~interface G0/0/0.88\nencapsulation dot1Q 88
+~interface G0/0/0\nnative vlan 88
+~switchport trunk native vlan 88
+}
+
+::VLAN Advanced - Voice VLAN QoS::
+Welcher Befehl aktiviert QoS Trust für ein IP-Telefon auf einem Switch-Port?
+{
+=mls qos trust cos
+~qos voice vlan trust
+~voice vlan qos enable
+~switchport voice qos
+}
+
+::VLAN Advanced - Trunk Allowed VLANs::
+Warum sollte man auf Trunk-Ports explizit die erlaubten VLANs einschränken?
+{
+=Um die Sicherheit zu erhöhen und unnötigen Broadcast-Verkehr zu reduzieren
+~Um die Trunk-Geschwindigkeit zu erhöhen
+~Um mehr VLANs erstellen zu können
+~Um DTP zu aktivieren
+}
+
+::VLAN Advanced - Management VLAN SVI::
+Was ist ein Switch Virtual Interface (SVI)?
+{
+=Eine virtuelle Layer-3-Schnittstelle für das Management eines VLANs auf dem Switch
+~Ein virtueller Switch innerhalb eines physischen Switches
+~Eine Verbindung zwischen zwei Switches
+~Ein Backup-Interface für Fehlertoleranz
+}
+
+::VLAN Advanced - Spanning Tree PortFast::
+Wofür wird der Befehl "spanning-tree portfast" auf Access-Ports verwendet?
+{
+=Um die Konvergenzzeit zu verkürzen, wenn ein Endgerät angeschlossen wird
+~Um Spanning Tree komplett zu deaktivieren
+~Um Trunk-Ports schneller zu aktivieren
+~Um die Port-Geschwindigkeit zu erhöhen
+}
+
+::VLAN Advanced - Passwort Verschlüsselung::
+Welcher Befehl verschlüsselt alle Klartext-Passwörter in der Konfiguration?
+{
+=service password-encryption
+~enable secret
+~password encryption enable
+~encrypt passwords
+}
+
+$CATEGORY: Cisco VLAN Advanced/Konfiguration
+
+::VLAN Advanced - Physisches Interface aktivieren::
+Warum muss das physische Interface G0/0/0 mit "no shutdown" aktiviert werden, auch wenn nur Subinterfaces verwendet werden?
+{
+=Subinterfaces können nur funktionieren, wenn das physische Parent-Interface aktiv ist
+~Um die Router-Konfiguration zu speichern
+~Um VLAN-Tagging zu aktivieren
+~Um DTP zu starten
+}
+
+::VLAN Advanced - VLAN Erstellung::
+Welche Schritte sind erforderlich, um ein funktionierendes VLAN einzurichten? Wählen Sie alle zutreffenden Antworten.
+{
+~%25%VLAN auf Switch erstellen (vlan 10)
+~%25%VLAN benennen (name Verwaltung)
+~%25%Port dem VLAN zuweisen (switchport access vlan 10)
+~%25%Router-Subinterface für VLAN konfigurieren
+~%-100%Switch neu starten
+}
+
+::VLAN Advanced - Trunk Konfiguration Befehl::
+Welcher Befehl setzt einen Switch-Port explizit in den Trunk-Modus?
+{
+=switchport mode trunk
+~switchport trunk mode
+~interface trunk
+~trunk mode enable
+}
+
+::VLAN Advanced - Voice VLAN Ports::
+Welche Konfiguration ist für einen Port erforderlich, der sowohl ein IP-Telefon (VLAN 40) als auch einen dahinter angeschlossenen PC (VLAN 20) unterstützt?
+{
+=switchport mode access\nswitchport access vlan 20\nswitchport voice vlan 40\nmls qos trust cos
+~switchport mode trunk\nswitchport trunk allowed vlan 20,40
+~switchport access vlan 20\nswitchport access vlan 40
+~switchport voice vlan 40 only
+}
+
+::VLAN Advanced - Default Gateway Switch::
+Wie wird das Default Gateway für einen Cisco Switch (Layer 2) konfiguriert?
+{
+=ip default-gateway 10.10.99.1
+~default-gateway 10.10.99.1
+~ip route 0.0.0.0 0.0.0.0 10.10.99.1
+~gateway 10.10.99.1
+}
+
+::VLAN Advanced - Native VLAN IP::
+Sollte das Native VLAN eine IP-Adresse auf dem Router-Subinterface erhalten?
+{
+=Nein, das Native VLAN sollte keine IP-Adresse haben
+~Ja, es benötigt eine IP-Adresse für die Kommunikation
+~Nur wenn es auch für Datenverkehr genutzt wird
+~Ja, aber nur auf dem Switch
+}
+
+::VLAN Advanced - Ungenutzte Ports::
+Welche Sicherheitsmaßnahmen sollten für ungenutzte Switch-Ports ergriffen werden?
+{
+~%50%In ein ungenutztes VLAN verschieben
+~%50%Mit dem Befehl "shutdown" deaktivieren
+~%-100%Im Trunk-Modus belassen
+~%-100%Keine Maßnahmen erforderlich
+}
+
+::VLAN Advanced - Banner MOTD::
+Welcher Befehl konfiguriert einen Login-Banner mit dem Text "Authorized Users Only!"?
+{
+=banner motd $ Authorized Users Only! $
+~banner login "Authorized Users Only!"
+~motd banner Authorized Users Only!
+~login banner $ Authorized Users Only! $
+}
+
+$CATEGORY: Cisco VLAN Advanced/Troubleshooting
+
+::VLAN Advanced - Keine Inter-VLAN Kommunikation::
+PCs in verschiedenen VLANs können nicht kommunizieren. Was sollte zuerst geprüft werden?
+{
+=Ist das physische Router-Interface (G0/0/0) mit "no shutdown" aktiviert?
+~Sind die PCs im gleichen Subnetz?
+~Ist der Switch eingeschaltet?
+~Sind die Kabel defekt?
+}
+
+::VLAN Advanced - Native VLAN Mismatch::
+Was passiert bei einem Native VLAN Mismatch zwischen Router und Switch?
+{
+~%33%CDP generiert Warnmeldungen
+~%33%Intermittierende Verbindungsprobleme können auftreten
+~%34%VLAN-Tagging funktioniert möglicherweise nicht korrekt
+~%-100%Der Trunk funktioniert überhaupt nicht
+~%-100%Alle VLANs werden automatisch geblockt
+}
+
+::VLAN Advanced - Trunk VLAN Allowed::
+Ein VLAN funktioniert nicht über den Trunk. Welcher Show-Befehl hilft bei der Diagnose?
+{
+=show interfaces trunk
+~show vlan
+~show running-config
+~show ip interface brief
+}
+
+::VLAN Advanced - SVI nicht erreichbar::
+Das Switch Management Interface (SVI) ist nicht erreichbar. Welche Konfiguration fehlt möglicherweise?
+{
+~%25%interface vlan 99 - no shutdown
+~%25%ip default-gateway auf dem Switch
+~%25%VLAN 99 im Trunk allowed
+~%25%Router-Subinterface für VLAN 99
+~%-100%switchport mode access vlan 99
+}
+
+::VLAN Advanced - Voice VLAN Problem::
+Ein IP-Telefon funktioniert nicht. Was sollte auf dem Switch-Port konfiguriert sein?
+{
+~%25%switchport voice vlan 40
+~%25%mls qos trust cos
+~%25%VLAN 40 muss existieren und im Trunk erlaubt sein
+~%25%spanning-tree portfast
+~%-100%switchport mode trunk
+}
+
+$CATEGORY: Cisco VLAN Advanced/Verifikation
+
+::VLAN Advanced - Show VLAN Brief::
+Welcher Befehl zeigt alle VLANs und ihre Port-Zuordnungen an?
+{
+=show vlan brief
+~show vlans
+~show interfaces vlan
+~show vlan all
+}
+
+::VLAN Advanced - Show Trunk::
+Mit welchem Befehl können Sie prüfen, ob ein Port im Trunk-Modus ist und welches Native VLAN konfiguriert ist?
+{
+=show interfaces trunk
+~show trunk
+~show switchport trunk
+~show interfaces switchport
+}
+
+::VLAN Advanced - Router Subinterfaces anzeigen::
+Welcher Befehl zeigt alle konfigurierten Subinterfaces auf einem Router an?
+{
+=show ip interface brief
+~show subinterfaces
+~show interfaces summary
+~show vlan interfaces
+}
+
+::VLAN Advanced - Ping Test Inter-VLAN::
+Ein PC in VLAN 10 (10.10.10.10) soll einen PC in VLAN 20 (10.10.20.10) erreichen. Welches Gerät routet diesen Verkehr?
+{
+=Der Router über seine Subinterfaces
+~Der Switch über das SVI
+~Direkte Kommunikation ohne Routing
+~Der Access Point
+}
+
+::VLAN Advanced - CDP Neighbor::
+Welcher Befehl zeigt die direkt verbundenen Cisco-Geräte an?
+{
+=show cdp neighbors
+~show neighbors
+~show connected devices
+~show network devices
+}
+
+$CATEGORY: Cisco VLAN Advanced/Best Practices
+
+::VLAN Advanced - Subnetting::
+Warum werden in der Konfiguration unterschiedliche Subnetzgrößen verwendet (/25, /26, /27, /28, /29)?
+{
+=Um IP-Adressen effizient zu nutzen basierend auf der Anzahl benötigter Hosts pro VLAN
+~Um die Netzwerkgeschwindigkeit zu optimieren
+~Um mehr VLANs erstellen zu können
+~Um Routing zu vereinfachen
+}
+
+::VLAN Advanced - DTP Deaktivierung::
+Warum sollte DTP (Dynamic Trunking Protocol) mit "switchport nonegotiate" deaktiviert werden?
+{
+=Um Sicherheit zu erhöhen und unerwünschte automatische Trunk-Bildung zu verhindern
+~Um die Trunk-Geschwindigkeit zu erhöhen
+~Um mehr VLANs zu unterstützen
+~Um PortFast zu aktivieren
+}
+
+::VLAN Advanced - Port Security::
+Was bewirkt der Befehl "switchport port-security" auf einem Access-Port?
+{
+=Begrenzt die Anzahl der MAC-Adressen, die auf dem Port gelernt werden können
+~Verschlüsselt den Datenverkehr auf dem Port
+~Aktiviert QoS auf dem Port
+~Deaktiviert den Port automatisch nach 24 Stunden
+}
+
+::VLAN Advanced - VLAN Nummerierung::
+Welche VLAN-IDs sind für normale VLANs (Standard Range) auf Cisco Switches verfügbar?
+{
+=1 - 1005
+~1 - 4094
+~2 - 1001
+~1 - 255
+}
+
+::VLAN Advanced - Management VLAN Trennung::
+Warum sollte ein separates Management VLAN (z.B. VLAN 99) verwendet werden?
+{
+~%50%Um Management-Verkehr vom Benutzer-Verkehr zu trennen
+~%50%Um die Sicherheit der Netzwerkverwaltung zu erhöhen
+~%-100%Um mehr Bandbreite für Benutzer bereitzustellen
+~%-100%Um VTP zu aktivieren
+}
+
+$CATEGORY: Cisco VLAN Advanced/Erweiterte Konzepte
+
+::VLAN Advanced - 802.1Q Standard::
+Was ist der IEEE 802.1Q Standard?
+{
+=Ein Standard für VLAN-Tagging auf Ethernet-Frames
+~Ein Standard für Wireless-Netzwerke
+~Ein Standard für Routing-Protokolle
+~Ein Standard für Kabel-Spezifikationen
+}
+
+::VLAN Advanced - Voice VLAN Vorteil::
+Welcher Hauptvorteil ergibt sich aus der Verwendung eines separaten Voice VLANs?
+{
+=QoS kann spezifisch für Sprachverkehr angewendet werden, um Verzögerungen zu minimieren
+~VoIP-Telefone funktionieren nur mit Voice VLAN
+~Die Sprachqualität wird automatisch HD
+~Mehr Telefone können angeschlossen werden
+}
+
+::VLAN Advanced - Layer 2 vs Layer 3::
+Ein Layer 2 Switch mit SVI kann zwischen verschiedenen VLANs routen.
+{
+FALSE#Ein Layer 2 Switch kann kein Inter-VLAN Routing durchführen. Dafür wird ein Layer 3 Switch oder Router benötigt.
+}
+
+::VLAN Advanced - Trunk vs Access::
+Auf einem Trunk-Port wird Datenverkehr aller VLANs ungetaggt übertragen.
+{
+FALSE#Auf einem Trunk-Port wird Verkehr mit 802.1Q-Tags übertragen, außer für das Native VLAN, welches ungetaggt ist.
+}
+
+::VLAN Advanced - Enable Secret vs Enable Password::
+Was ist der Unterschied zwischen "enable secret" und "enable password"?
+{
+="enable secret" verwendet stärkere MD5-Verschlüsselung, während "enable password" nur mit Type 7 verschlüsselt wird
+~Es gibt keinen Unterschied, beide sind identisch
+~"enable password" ist sicherer als "enable secret"
+~"enable secret" kann nur mit SSH verwendet werden
+}
