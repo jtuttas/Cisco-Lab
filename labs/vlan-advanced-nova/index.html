@@ -1,0 +1,2062 @@
+
+<!doctype html>
+<html lang="de" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Praxisorientierte Cisco Netzwerk-Übungen">
+      
+      
+        <meta name="author" content="Cisco Lab">
+      
+      
+      
+        <link rel="prev" href="../vlan-router-on-stick/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>VLAN Advanced - R-Nova - Cisco Network Labs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vlan-router-on-a-stick-erweiterte-konfiguration" class="md-skip">
+          Zum Inhalt
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Kopfzeile">
+    <a href="../.." title="Cisco Network Labs" class="md-header__button md-logo" aria-label="Cisco Network Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cisco Network Labs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              VLAN Advanced - R-Nova
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Suche" placeholder="Suche" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Suche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Zurücksetzen" aria-label="Zurücksetzen" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Suche wird initialisiert
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jtuttas/Cisco-Lab" title="Zum Repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jtuttas/Cisco-Lab
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Hauptnavigation" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../vlan-router-on-stick/" class="md-tabs__link">
+          
+  
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cisco Network Labs" class="md-nav__button md-logo" aria-label="Cisco Network Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Cisco Network Labs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jtuttas/Cisco-Lab" title="Zum Repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jtuttas/Cisco-Lab
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vlan-router-on-stick/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLAN Router-on-a-Stick
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLAN Advanced - R-Nova
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLAN Advanced - R-Nova
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lernsituation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lernsituation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lernsituation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ausgangssituation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ausgangssituation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lernziele" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lernziele
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topologie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topologie
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Topologie">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#netzwerkgerate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Netzwerkgeräte
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vlan-und-ip-adressplan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VLAN- und IP-Adressplan
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VLAN- und IP-Adressplan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sicherheitsfeatures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sicherheitsfeatures
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#netzwerkarchitektur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Netzwerkarchitektur
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arbeitsauftrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arbeitsauftrag
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arbeitsauftrag">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aufgabe-1-basis-konfiguration-und-verkabelung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe 1: Basis-Konfiguration und Verkabelung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aufgabe-2-router-konfiguration-r-nova" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe 2: Router-Konfiguration (R-Nova)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aufgabe-3-switch-konfiguration-s1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe 3: Switch-Konfiguration (S1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aufgabe-4-endgerate-konfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe 4: Endgeräte-Konfiguration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verifikation-und-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verifikation und Tests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verifikation und Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-1-vlan-konfiguration-prufen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 1: VLAN-Konfiguration prüfen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-2-router-subinterfaces-prufen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 2: Router-Subinterfaces prüfen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-3-intra-vlan-konnektivitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 3: Intra-VLAN Konnektivität
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-4-inter-vlan-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 4: Inter-VLAN Routing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-5-switch-management-zugriff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 5: Switch-Management-Zugriff
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-6-voice-vlan-funktionalitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 6: Voice VLAN Funktionalität
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-1-keine-kommunikation-zwischen-vlans" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 1: Keine Kommunikation zwischen VLANs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-2-native-vlan-mismatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 2: Native VLAN Mismatch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-3-trunk-erlaubt-vlan-nicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 3: Trunk erlaubt VLAN nicht
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-4-voice-vlan-funktioniert-nicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 4: Voice VLAN funktioniert nicht
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-5-switch-management-nicht-erreichbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 5: Switch-Management nicht erreichbar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typische-stolperfallen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typische Stolperfallen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erweiterte-konfigurationsoptionen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Erweiterte Konfigurationsoptionen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Erweiterte Konfigurationsoptionen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-a-dtp-dynamic-trunking-protocol-deaktivieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option A: DTP (Dynamic Trunking Protocol) deaktivieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-b-port-security-aktivieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option B: Port Security aktivieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-c-vtp-vlan-trunking-protocol-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option C: VTP (VLAN Trunking Protocol) Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-d-dhcp-fur-endgerate-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option D: DHCP für Endgeräte (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dokumentationsaufgaben" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dokumentationsaufgaben
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zusammenfassung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zusammenfassung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nachste-schritte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nächste Schritte
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lernsituation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lernsituation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lernsituation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ausgangssituation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ausgangssituation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lernziele" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lernziele
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topologie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topologie
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Topologie">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#netzwerkgerate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Netzwerkgeräte
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vlan-und-ip-adressplan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VLAN- und IP-Adressplan
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VLAN- und IP-Adressplan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sicherheitsfeatures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sicherheitsfeatures
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#netzwerkarchitektur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Netzwerkarchitektur
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arbeitsauftrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arbeitsauftrag
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arbeitsauftrag">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aufgabe-1-basis-konfiguration-und-verkabelung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe 1: Basis-Konfiguration und Verkabelung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aufgabe-2-router-konfiguration-r-nova" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe 2: Router-Konfiguration (R-Nova)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aufgabe-3-switch-konfiguration-s1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe 3: Switch-Konfiguration (S1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aufgabe-4-endgerate-konfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe 4: Endgeräte-Konfiguration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verifikation-und-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verifikation und Tests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verifikation und Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-1-vlan-konfiguration-prufen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 1: VLAN-Konfiguration prüfen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-2-router-subinterfaces-prufen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 2: Router-Subinterfaces prüfen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-3-intra-vlan-konnektivitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 3: Intra-VLAN Konnektivität
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-4-inter-vlan-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 4: Inter-VLAN Routing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-5-switch-management-zugriff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 5: Switch-Management-Zugriff
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-6-voice-vlan-funktionalitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 6: Voice VLAN Funktionalität
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-1-keine-kommunikation-zwischen-vlans" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 1: Keine Kommunikation zwischen VLANs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-2-native-vlan-mismatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 2: Native VLAN Mismatch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-3-trunk-erlaubt-vlan-nicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 3: Trunk erlaubt VLAN nicht
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-4-voice-vlan-funktioniert-nicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 4: Voice VLAN funktioniert nicht
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-5-switch-management-nicht-erreichbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem 5: Switch-Management nicht erreichbar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typische-stolperfallen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typische Stolperfallen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erweiterte-konfigurationsoptionen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Erweiterte Konfigurationsoptionen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Erweiterte Konfigurationsoptionen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-a-dtp-dynamic-trunking-protocol-deaktivieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option A: DTP (Dynamic Trunking Protocol) deaktivieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-b-port-security-aktivieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option B: Port Security aktivieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-c-vtp-vlan-trunking-protocol-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option C: VTP (VLAN Trunking Protocol) Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-d-dhcp-fur-endgerate-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option D: DHCP für Endgeräte (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dokumentationsaufgaben" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dokumentationsaufgaben
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zusammenfassung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zusammenfassung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nachste-schritte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nächste Schritte
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="vlan-router-on-a-stick-erweiterte-konfiguration">VLAN Router-on-a-Stick - Erweiterte Konfiguration<a class="headerlink" href="#vlan-router-on-a-stick-erweiterte-konfiguration" title="Permanent link">&para;</a></h1>
+<h2 id="lernsituation">Lernsituation<a class="headerlink" href="#lernsituation" title="Permanent link">&para;</a></h2>
+<h3 id="ausgangssituation">Ausgangssituation<a class="headerlink" href="#ausgangssituation" title="Permanent link">&para;</a></h3>
+<p>Die Nova GmbH plant eine umfassende Netzwerk-Segmentierung mit erweiterten Sicherheitsfeatures. Das Unternehmen verfügt über verschiedene Abteilungen mit unterschiedlichen Sicherheitsanforderungen:</p>
+<ul>
+<li><strong>Verwaltung (VLAN 10)</strong>: IT-Administration und Netzwerk-Management - höchste Sicherheitsstufe</li>
+<li><strong>Entwicklung (VLAN 20)</strong>: Software-Entwicklung und Testing - mittlere Sicherheitsstufe  </li>
+<li><strong>Vertrieb (VLAN 30)</strong>: Sales und Customer Relations - mittlere Sicherheitsstufe</li>
+<li><strong>Voice (VLAN 40)</strong>: IP-Telefonie mit QoS-Anforderungen</li>
+<li><strong>Management (VLAN 99)</strong>: Dediziertes Switch-Management VLAN</li>
+<li><strong>Native VLAN (88)</strong>: Separates Native VLAN für erhöhte Sicherheit</li>
+</ul>
+<p>Die Implementierung soll Best Practices für Netzwerksicherheit berücksichtigen, einschließlich verschlüsselter Passwörter, separatem Native VLAN, und Voice VLAN-Konfiguration.</p>
+<h3 id="lernziele">Lernziele<a class="headerlink" href="#lernziele" title="Permanent link">&para;</a></h3>
+<p>Nach Abschluss dieser Übung können Sie:
+- Erweiterte VLAN-Konfigurationen mit unterschiedlichen Subnetzgrößen implementieren
+- Sicherheits-Best-Practices wie separate Native VLANs konfigurieren
+- Voice VLANs mit QoS (Quality of Service) einrichten
+- Management VLANs (SVI) für Switch-Administration konfigurieren
+- Passwort-Verschlüsselung und Banner implementieren
+- Router-on-a-Stick mit mehreren Subinterfaces konfigurieren
+- Trunk-Konfigurationen mit allowed VLANs optimieren
+- Spanning Tree PortFast für Access-Ports aktivieren
+- Netzwerk-Sicherheit durch Port-Deaktivierung erhöhen</p>
+<h2 id="topologie">Topologie<a class="headerlink" href="#topologie" title="Permanent link">&para;</a></h2>
+<p><img alt="Network Topology" src="diagram.png" /></p>
+<h3 id="netzwerkgerate">Netzwerkgeräte<a class="headerlink" href="#netzwerkgerate" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>1x Router</strong>: Cisco 4331 (R-Nova)</li>
+<li><strong>1x Switch</strong>: Cisco 2960 (S1)</li>
+<li><strong>6x PCs</strong>: Endgeräte in VLANs 10, 20, 30</li>
+<li><strong>1x IP-Telefon</strong>: Voice VLAN 40</li>
+</ul>
+<h2 id="vlan-und-ip-adressplan">VLAN- und IP-Adressplan<a class="headerlink" href="#vlan-und-ip-adressplan" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>VLAN</th>
+<th>Name</th>
+<th>Zweck</th>
+<th>Netz</th>
+<th>Maske</th>
+<th>Gateway (Router)</th>
+<th>Hosts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td>Verwaltung</td>
+<td>IT/Netz-Admin</td>
+<td>10.10.10.0/25</td>
+<td>255.255.255.128</td>
+<td>10.10.10.1</td>
+<td>126</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Entwicklung</td>
+<td>Software-Dev</td>
+<td>10.10.20.0/26</td>
+<td>255.255.255.192</td>
+<td>10.10.20.1</td>
+<td>62</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Vertrieb</td>
+<td>Sales/CRM</td>
+<td>10.10.30.0/27</td>
+<td>255.255.255.224</td>
+<td>10.10.30.1</td>
+<td>30</td>
+</tr>
+<tr>
+<td>40</td>
+<td>Voice</td>
+<td>IP-Telefonie</td>
+<td>10.10.40.0/28</td>
+<td>255.255.255.240</td>
+<td>10.10.40.1</td>
+<td>14</td>
+</tr>
+<tr>
+<td>99</td>
+<td>Management</td>
+<td>Switch-Mgmt</td>
+<td>10.10.99.0/29</td>
+<td>255.255.255.248</td>
+<td>10.10.99.1</td>
+<td>6</td>
+</tr>
+<tr>
+<td>88</td>
+<td>Native</td>
+<td>Trunk Native</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sicherheitsfeatures">Sicherheitsfeatures<a class="headerlink" href="#sicherheitsfeatures" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✅ <strong>Passwort-Verschlüsselung</strong>: <code>service password-encryption</code></li>
+<li>✅ <strong>Enable Secret</strong>: verschlüsselt mit MD5</li>
+<li>✅ <strong>Banner MOTD</strong>: Warnhinweis für unbefugten Zugriff</li>
+<li>✅ <strong>Separates Native VLAN</strong>: VLAN 88 (nicht Default VLAN 1)</li>
+<li>✅ <strong>Allowed VLANs</strong>: Trunk erlaubt nur benötigte VLANs</li>
+<li>✅ <strong>Voice VLAN</strong>: QoS Trust COS für IP-Telefone</li>
+<li>✅ <strong>Spanning Tree PortFast</strong>: Schnellere Konvergenz für Access-Ports</li>
+<li>✅ <strong>Ungenutzte Ports</strong>: Deaktiviert mit <code>shutdown</code></li>
+</ul>
+<h3 id="netzwerkarchitektur">Netzwerkarchitektur<a class="headerlink" href="#netzwerkarchitektur" title="Permanent link">&para;</a></h3>
+<p><strong>Physische Verbindungen:</strong>
+- R-Nova G0/0/0 ↔ S1 Gi0/1 (802.1Q Trunk)
+- S1 Fa0/1-2 → PC-Verwaltung (Access VLAN 10)
+- S1 Fa0/3-4 → PC-Entwicklung (Access VLAN 20)
+- S1 Fa0/5-6 → PC-Vertrieb (Access VLAN 30)
+- S1 Fa0/7 → IP-Telefon (Access VLAN 20 für PC dahinter + Voice VLAN 40 für Telefon)</p>
+<p><strong>Router-Subinterfaces:</strong>
+- G0/0/0.10 → VLAN 10 (10.10.10.1/25)
+- G0/0/0.20 → VLAN 20 (10.10.20.1/26)
+- G0/0/0.30 → VLAN 30 (10.10.30.1/27)
+- G0/0/0.40 → VLAN 40 (10.10.40.1/28)
+- G0/0/0.99 → VLAN 99 (10.10.99.1/29)
+- G0/0/0.88 → Native VLAN (keine IP)</p>
+<h2 id="arbeitsauftrag">Arbeitsauftrag<a class="headerlink" href="#arbeitsauftrag" title="Permanent link">&para;</a></h2>
+<h3 id="aufgabe-1-basis-konfiguration-und-verkabelung">Aufgabe 1: Basis-Konfiguration und Verkabelung<a class="headerlink" href="#aufgabe-1-basis-konfiguration-und-verkabelung" title="Permanent link">&para;</a></h3>
+<h4 id="11-verkabelung-vorbereiten">1.1 Verkabelung vorbereiten<a class="headerlink" href="#11-verkabelung-vorbereiten" title="Permanent link">&para;</a></h4>
+<p>Verkabeln Sie die Geräte gemäß der Topologie:
+- R-Nova G0/0/0 ↔ S1 Gi0/1 (Copper Straight-Through)
+- Verbinden Sie die PCs und das IP-Telefon mit den entsprechenden Switch-Ports</p>
+<h3 id="aufgabe-2-router-konfiguration-r-nova">Aufgabe 2: Router-Konfiguration (R-Nova)<a class="headerlink" href="#aufgabe-2-router-konfiguration-r-nova" title="Permanent link">&para;</a></h3>
+<h4 id="21-basis-sicherheitskonfiguration">2.1 Basis-Sicherheitskonfiguration<a class="headerlink" href="#21-basis-sicherheitskonfiguration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>enable
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>configure terminal
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>hostname R-Nova
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>no ip domain-lookup
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>! Passwort-Sicherheit
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>enable secret class
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>line console 0
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a> password cisco
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a> login
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>line vty 0 4
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a> password cisco
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a> login
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>service password-encryption
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>! Banner Message of the Day
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>banner motd $ Authorized Users Only! $
+</code></pre></div>
+<h4 id="22-router-on-a-stick-mit-subinterfaces">2.2 Router-on-a-Stick mit Subinterfaces<a class="headerlink" href="#22-router-on-a-stick-mit-subinterfaces" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>! Physisches Interface aktivieren (wichtig!)
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>interface GigabitEthernet0/0/0
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a> no shutdown
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>! VLAN 10 - Verwaltung
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>interface GigabitEthernet0/0/0.10
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a> description VLAN10 Verwaltung
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a> encapsulation dot1Q 10
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a> ip address 10.10.10.1 255.255.255.128
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>! VLAN 20 - Entwicklung
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>interface GigabitEthernet0/0/0.20
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a> description VLAN20 Entwicklung
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a> encapsulation dot1Q 20
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a> ip address 10.10.20.1 255.255.255.192
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>! VLAN 30 - Vertrieb
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>interface GigabitEthernet0/0/0.30
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a> description VLAN30 Vertrieb
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a> encapsulation dot1Q 30
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a> ip address 10.10.30.1 255.255.255.224
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>! VLAN 40 - Voice
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>interface GigabitEthernet0/0/0.40
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a> description VLAN40 Voice
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a> encapsulation dot1Q 40
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a> ip address 10.10.40.1 255.255.255.240
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>! VLAN 99 - Management
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>interface GigabitEthernet0/0/0.99
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a> description VLAN99 Management
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a> encapsulation dot1Q 99
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a> ip address 10.10.99.1 255.255.255.248
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>! Native VLAN 88 (keine IP-Adresse!)
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>interface GigabitEthernet0/0/0.88
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a> description Native VLAN
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a> encapsulation dot1Q 88 native
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a> ! keine IP auf Native VLAN
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>! G0/0/1 für WAN-Reserve (optional)
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>interface GigabitEthernet0/0/1
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a> no shutdown
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a>end
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a>write memory
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a>show ip interface brief
+</code></pre></div>
+<p><strong>Wichtige Hinweise:</strong>
+- Das physische Interface G0/0/0 muss mit <code>no shutdown</code> aktiviert werden
+- Native VLAN erhält keine IP-Adresse
+- Jedes Subinterface benötigt die <code>encapsulation dot1Q</code> Anweisung</p>
+<h3 id="aufgabe-3-switch-konfiguration-s1">Aufgabe 3: Switch-Konfiguration (S1)<a class="headerlink" href="#aufgabe-3-switch-konfiguration-s1" title="Permanent link">&para;</a></h3>
+<h4 id="31-basis-sicherheitskonfiguration">3.1 Basis-Sicherheitskonfiguration<a class="headerlink" href="#31-basis-sicherheitskonfiguration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>enable
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>configure terminal
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>hostname S1
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>no ip domain-lookup
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>! Passwort-Sicherheit
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>enable secret class
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>line console 0
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a> password cisco
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a> login
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>line vty 0 15
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a> password cisco
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a> login
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>service password-encryption
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>! Banner Message of the Day
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>banner motd $ Authorized Users Only! $
+</code></pre></div>
+<h4 id="32-vlan-erstellung">3.2 VLAN-Erstellung<a class="headerlink" href="#32-vlan-erstellung" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>! VLANs anlegen und benennen
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>vlan 10
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a> name Verwaltung
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>vlan 20
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a> name Entwicklung
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>vlan 30
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a> name Vertrieb
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>vlan 40
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a> name Voice
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>vlan 88
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a> name Native
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>vlan 99
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a> name Management
+</code></pre></div>
+<h4 id="33-access-ports-konfigurieren">3.3 Access-Ports konfigurieren<a class="headerlink" href="#33-access-ports-konfigurieren" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>! VLAN 10 - Verwaltung (Ports Fa0/1-2)
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>interface range FastEthernet0/1 - 2
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a> switchport mode access
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a> switchport access vlan 10
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a> spanning-tree portfast
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a> description PC-Verwaltung
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>! VLAN 20 - Entwicklung (Ports Fa0/3-4)
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>interface range FastEthernet0/3 - 4
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a> switchport mode access
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a> switchport access vlan 20
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a> spanning-tree portfast
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a> description PC-Entwicklung
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>! VLAN 30 - Vertrieb (Ports Fa0/5-6)
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>interface range FastEthernet0/5 - 6
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a> switchport mode access
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a> switchport access vlan 30
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a> spanning-tree portfast
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a> description PC-Vertrieb
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>! VLAN 20 + Voice VLAN 40 (Port Fa0/7 für IP-Telefon)
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>interface FastEthernet0/7
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a> switchport mode access
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a> switchport access vlan 20
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a> mls qos trust cos
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a> switchport voice vlan 40
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a> spanning-tree portfast
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a> description IP-Phone mit Voice VLAN
+</code></pre></div>
+<p><strong>Erklärung Voice VLAN:</strong>
+- <code>switchport access vlan 20</code>: Datennetzwerk für PC hinter Telefon
+- <code>switchport voice vlan 40</code>: Separates VLAN für Sprachverkehr
+- <code>mls qos trust cos</code>: QoS aktivieren, COS-Werte vom Telefon vertrauen</p>
+<h4 id="34-trunk-port-zum-router">3.4 Trunk-Port zum Router<a class="headerlink" href="#34-trunk-port-zum-router" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>! Trunk zu R-Nova
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>interface GigabitEthernet0/1
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a> description Trunk zu R-Nova G0/0/0
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a> switchport mode trunk
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a> switchport trunk native vlan 88
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a> switchport trunk allowed vlan 10,20,30,40,88,99
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a> no shutdown
+</code></pre></div>
+<p><strong>Best Practices Trunk:</strong>
+- Explizit <code>switchport mode trunk</code> setzen (DTP vermeiden)
+- Native VLAN ändern (nicht Default VLAN 1)
+- Nur benötigte VLANs erlauben (<code>allowed vlan</code>)</p>
+<h4 id="35-management-vlan-svi">3.5 Management VLAN (SVI)<a class="headerlink" href="#35-management-vlan-svi" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>! Switch Virtual Interface für Management
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>interface vlan 99
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a> description Mgmt-SVI
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a> ip address 10.10.99.2 255.255.255.248
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a> no shutdown
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>exit
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>! Default Gateway für Switch
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>ip default-gateway 10.10.99.1
+</code></pre></div>
+<h4 id="36-ungenutzte-ports-sichern">3.6 Ungenutzte Ports sichern<a class="headerlink" href="#36-ungenutzte-ports-sichern" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>! Ungenutzte Ports deaktivieren (Beispiel: Fa0/8-24, Gi0/2)
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>! Best Practice: Dediziertes &quot;Unused&quot; VLAN für Sicherheit
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>vlan 999
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a> name Unused
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>interface range FastEthernet0/8 - 24
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a> switchport mode access
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a> switchport access vlan 999
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a> shutdown
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a> description Unused - Security
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>interface GigabitEthernet0/2
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a> switchport mode access
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a> switchport access vlan 999
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a> shutdown
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a> description Unused - Security
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>end
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>write memory
+</code></pre></div>
+<p><strong>Hinweis:</strong> Ungenutzte Ports sollten in ein dediziertes VLAN (z.B. VLAN 999) ohne Routing verschoben werden, nicht in ein produktives VLAN.</p>
+<h3 id="aufgabe-4-endgerate-konfiguration">Aufgabe 4: Endgeräte-Konfiguration<a class="headerlink" href="#aufgabe-4-endgerate-konfiguration" title="Permanent link">&para;</a></h3>
+<h4 id="41-ip-konfiguration-der-pcs">4.1 IP-Konfiguration der PCs<a class="headerlink" href="#41-ip-konfiguration-der-pcs" title="Permanent link">&para;</a></h4>
+<p>Konfigurieren Sie die PCs mit folgenden IP-Adressen (statisch):</p>
+<p><strong>VLAN 10 - Verwaltung:</strong>
+- PC-Verwaltung: <code>10.10.10.10 / 255.255.255.128</code>, Gateway: <code>10.10.10.1</code></p>
+<p><strong>VLAN 20 - Entwicklung:</strong>
+- PC-Entwicklung: <code>10.10.20.10 / 255.255.255.192</code>, Gateway: <code>10.10.20.1</code></p>
+<p><strong>VLAN 30 - Vertrieb:</strong>
+- PC-Vertrieb: <code>10.10.30.10 / 255.255.255.224</code>, Gateway: <code>10.10.30.1</code></p>
+<p><strong>VLAN 40 - Voice (IP-Telefon):</strong>
+- Optional: Statisch oder DHCP im Bereich <code>10.10.40.0/28</code></p>
+<p><strong>Switch Management (SVI):</strong>
+- Bereits konfiguriert: <code>10.10.99.2/29</code>, Gateway: <code>10.10.99.1</code></p>
+<h2 id="verifikation-und-tests">Verifikation und Tests<a class="headerlink" href="#verifikation-und-tests" title="Permanent link">&para;</a></h2>
+<h3 id="test-1-vlan-konfiguration-prufen">Test 1: VLAN-Konfiguration prüfen<a class="headerlink" href="#test-1-vlan-konfiguration-prufen" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>! Auf S1
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>S1# show vlan brief
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>S1# show interfaces trunk
+</code></pre></div>
+<p><strong>Erwartetes Ergebnis:</strong>
+- Alle VLANs (10, 20, 30, 40, 88, 99) sichtbar
+- Ports korrekt zugewiesen
+- Trunk Gi0/1 aktiv mit Native VLAN 88</p>
+<h3 id="test-2-router-subinterfaces-prufen">Test 2: Router-Subinterfaces prüfen<a class="headerlink" href="#test-2-router-subinterfaces-prufen" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>! Auf R-Nova
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>R-Nova# show ip interface brief
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>R-Nova# show interfaces GigabitEthernet0/0/0
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>R-Nova# show vlans
+</code></pre></div>
+<p><strong>Erwartetes Ergebnis:</strong>
+- Alle Subinterfaces <code>.10, .20, .30, .40, .88, .99</code> sind "up/up"
+- IP-Adressen korrekt konfiguriert</p>
+<h3 id="test-3-intra-vlan-konnektivitat">Test 3: Intra-VLAN Konnektivität<a class="headerlink" href="#test-3-intra-vlan-konnektivitat" title="Permanent link">&para;</a></h3>
+<p>Von einem PC im VLAN 10:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ping 10.10.10.1    (Gateway - sollte erfolgreich sein)
+</code></pre></div></p>
+<p>Von einem PC im VLAN 20:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ping 10.10.20.1    (Gateway - sollte erfolgreich sein)
+</code></pre></div></p>
+<h3 id="test-4-inter-vlan-routing">Test 4: Inter-VLAN Routing<a class="headerlink" href="#test-4-inter-vlan-routing" title="Permanent link">&para;</a></h3>
+<p>Von PC-Verwaltung (VLAN 10):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ping 10.10.20.10   (PC in VLAN 20 - sollte erfolgreich sein)
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>ping 10.10.30.10   (PC in VLAN 30 - sollte erfolgreich sein)
+</code></pre></div></p>
+<p>Von PC-Entwicklung (VLAN 20):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>ping 10.10.10.10   (PC in VLAN 10 - sollte erfolgreich sein)
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>ping 10.10.30.10   (PC in VLAN 30 - sollte erfolgreich sein)
+</code></pre></div></p>
+<h3 id="test-5-switch-management-zugriff">Test 5: Switch-Management-Zugriff<a class="headerlink" href="#test-5-switch-management-zugriff" title="Permanent link">&para;</a></h3>
+<p>Von einem beliebigen PC:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>ping 10.10.99.2    (Switch SVI - sollte erfolgreich sein)
+</code></pre></div></p>
+<p>Von R-Nova:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>telnet 10.10.99.2  (Telnet zu S1 - mit Passwort &quot;cisco&quot; einloggen)
+</code></pre></div></p>
+<h3 id="test-6-voice-vlan-funktionalitat">Test 6: Voice VLAN Funktionalität<a class="headerlink" href="#test-6-voice-vlan-funktionalitat" title="Permanent link">&para;</a></h3>
+<p>Prüfen Sie auf S1:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>S1# show interfaces FastEthernet0/7 switchport
+</code></pre></div></p>
+<p><strong>Erwartetes Ergebnis:</strong>
+- Access VLAN: 20
+- Voice VLAN: 40
+- Administrative Mode: static access</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="problem-1-keine-kommunikation-zwischen-vlans">Problem 1: Keine Kommunikation zwischen VLANs<a class="headerlink" href="#problem-1-keine-kommunikation-zwischen-vlans" title="Permanent link">&para;</a></h3>
+<p><strong>Symptome:</strong> PCs in verschiedenen VLANs können nicht kommunizieren</p>
+<p><strong>Mögliche Ursachen und Lösungen:</strong>
+1. <strong>Router-Interface nicht aktiviert</strong>
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>interface GigabitEthernet0/0/0
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a> no shutdown
+</code></pre></div></p>
+<ol>
+<li><strong>Falsche Subinterface-Konfiguration</strong></li>
+<li>Prüfen: VLAN-ID in <code>encapsulation dot1Q</code> stimmt überein</li>
+<li>
+<p>Prüfen: IP-Adresse und Maske korrekt</p>
+</li>
+<li>
+<p><strong>Default Gateway am PC falsch</strong></p>
+</li>
+<li>Muss auf Router-Subinterface-IP zeigen</li>
+</ol>
+<h3 id="problem-2-native-vlan-mismatch">Problem 2: Native VLAN Mismatch<a class="headerlink" href="#problem-2-native-vlan-mismatch" title="Permanent link">&para;</a></h3>
+<p><strong>Symptome:</strong> CDP-Warnungen, intermittierende Verbindungsprobleme</p>
+<p><strong>Lösung:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>! Auf beiden Seiten (Router und Switch) muss Native VLAN übereinstimmen
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>! Switch:
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>interface GigabitEthernet0/1
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a> switchport trunk native vlan 88
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>! Router:
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>interface GigabitEthernet0/0/0.88
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a> encapsulation dot1Q 88 native
+</code></pre></div></p>
+<h3 id="problem-3-trunk-erlaubt-vlan-nicht">Problem 3: Trunk erlaubt VLAN nicht<a class="headerlink" href="#problem-3-trunk-erlaubt-vlan-nicht" title="Permanent link">&para;</a></h3>
+<p><strong>Symptome:</strong> VLAN funktioniert nicht über Trunk</p>
+<p><strong>Lösung:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>interface GigabitEthernet0/1
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a> switchport trunk allowed vlan 10,20,30,40,88,99
+</code></pre></div></p>
+<p>Alternativ alle VLANs erlauben (nicht empfohlen):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a> switchport trunk allowed vlan all
+</code></pre></div></p>
+<h3 id="problem-4-voice-vlan-funktioniert-nicht">Problem 4: Voice VLAN funktioniert nicht<a class="headerlink" href="#problem-4-voice-vlan-funktioniert-nicht" title="Permanent link">&para;</a></h3>
+<p><strong>Symptome:</strong> IP-Telefon erhält keine IP oder kann nicht telefonieren</p>
+<p><strong>Lösung:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>interface FastEthernet0/7
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a> switchport mode access
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a> switchport access vlan 20
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a> switchport voice vlan 40
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a> mls qos trust cos
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a> spanning-tree portfast
+</code></pre></div></p>
+<p>Prüfen Sie:
+- Voice VLAN ist auf Switch erstellt
+- Voice VLAN ist im Trunk allowed
+- Router hat Subinterface für Voice VLAN</p>
+<h3 id="problem-5-switch-management-nicht-erreichbar">Problem 5: Switch-Management nicht erreichbar<a class="headerlink" href="#problem-5-switch-management-nicht-erreichbar" title="Permanent link">&para;</a></h3>
+<p><strong>Symptome:</strong> Kann nicht zu Switch SVI pingen oder telnet</p>
+<p><strong>Lösung:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>! SVI muss &quot;no shutdown&quot; haben
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>interface vlan 99
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a> ip address 10.10.99.2 255.255.255.248
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a> no shutdown
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>exit
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>! Default Gateway muss gesetzt sein
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>ip default-gateway 10.10.99.1
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>! VLAN 99 muss im Trunk erlaubt sein
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>interface GigabitEthernet0/1
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a> switchport trunk allowed vlan add 99
+</code></pre></div></p>
+<h2 id="typische-stolperfallen">Typische Stolperfallen<a class="headerlink" href="#typische-stolperfallen" title="Permanent link">&para;</a></h2>
+<ol>
+<li>❌ <strong>Native VLAN Mismatch</strong> zwischen Router und Switch</li>
+<li>
+<p>✅ Lösung: VLAN 88 auf beiden Seiten als Native konfigurieren</p>
+</li>
+<li>
+<p>❌ <strong>Physisches Interface nicht aktiviert</strong> (Router G0/0/0)</p>
+</li>
+<li>
+<p>✅ Lösung: <code>no shutdown</code> auf G0/0/0 nicht vergessen</p>
+</li>
+<li>
+<p>❌ <strong>Subinterface ohne <code>encapsulation dot1Q</code></strong></p>
+</li>
+<li>
+<p>✅ Lösung: Jedes Subinterface benötigt diese Anweisung</p>
+</li>
+<li>
+<p>❌ <strong>Default Gateway am PC falsch oder fehlt</strong></p>
+</li>
+<li>
+<p>✅ Lösung: Gateway muss Router-Subinterface-IP sein</p>
+</li>
+<li>
+<p>❌ <strong>VLAN existiert nicht auf Switch</strong></p>
+</li>
+<li>
+<p>✅ Lösung: VLANs müssen explizit mit <code>vlan X</code> erstellt werden</p>
+</li>
+<li>
+<p>❌ <strong>VLAN nicht im Trunk allowed</strong></p>
+</li>
+<li>
+<p>✅ Lösung: <code>switchport trunk allowed vlan</code> Liste prüfen</p>
+</li>
+<li>
+<p>❌ <strong>PortFast auf Trunk-Port aktiviert</strong></p>
+</li>
+<li>
+<p>✅ Lösung: PortFast nur auf Access-Ports verwenden</p>
+</li>
+<li>
+<p>❌ <strong>Voice VLAN ohne QoS Trust</strong></p>
+</li>
+<li>✅ Lösung: <code>mls qos trust cos</code> auf Voice-Port setzen</li>
+</ol>
+<h2 id="erweiterte-konfigurationsoptionen">Erweiterte Konfigurationsoptionen<a class="headerlink" href="#erweiterte-konfigurationsoptionen" title="Permanent link">&para;</a></h2>
+<h3 id="option-a-dtp-dynamic-trunking-protocol-deaktivieren">Option A: DTP (Dynamic Trunking Protocol) deaktivieren<a class="headerlink" href="#option-a-dtp-dynamic-trunking-protocol-deaktivieren" title="Permanent link">&para;</a></h3>
+<p>Für erhöhte Sicherheit DTP explizit deaktivieren:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>interface GigabitEthernet0/1
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a> switchport mode trunk
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a> switchport nonegotiate
+</code></pre></div>
+<h3 id="option-b-port-security-aktivieren">Option B: Port Security aktivieren<a class="headerlink" href="#option-b-port-security-aktivieren" title="Permanent link">&para;</a></h3>
+<p>Access-Ports gegen MAC-Flooding schützen:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>interface range FastEthernet0/1 - 6
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a> switchport port-security
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a> switchport port-security maximum 2
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a> switchport port-security violation restrict
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a> switchport port-security mac-address sticky
+</code></pre></div>
+<h3 id="option-c-vtp-vlan-trunking-protocol-mode">Option C: VTP (VLAN Trunking Protocol) Mode<a class="headerlink" href="#option-c-vtp-vlan-trunking-protocol-mode" title="Permanent link">&para;</a></h3>
+<p>Für Single-Switch-Umgebung VTP transparent schalten:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>vtp mode transparent
+</code></pre></div>
+<h3 id="option-d-dhcp-fur-endgerate-optional">Option D: DHCP für Endgeräte (optional)<a class="headerlink" href="#option-d-dhcp-fur-endgerate-optional" title="Permanent link">&para;</a></h3>
+<p>Statt statischer IPs DHCP-Pools auf Router konfigurieren:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>! Auf R-Nova
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>ip dhcp excluded-address 10.10.10.1 10.10.10.10
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>ip dhcp pool VLAN10
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a> network 10.10.10.0 255.255.255.128
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a> default-router 10.10.10.1
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a> dns-server 8.8.8.8
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>ip dhcp excluded-address 10.10.20.1 10.10.20.10
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>ip dhcp pool VLAN20
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a> network 10.10.20.0 255.255.255.192
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a> default-router 10.10.20.1
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a> dns-server 8.8.8.8
+</code></pre></div>
+<h2 id="dokumentationsaufgaben">Dokumentationsaufgaben<a class="headerlink" href="#dokumentationsaufgaben" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Netzwerk-Dokumentation erstellen:</strong></li>
+<li>Dokumentieren Sie alle IP-Adressen</li>
+<li>Erstellen Sie eine Port-Zuordnungstabelle</li>
+<li>
+<p>Notieren Sie alle Passwörter (in Produktivumgebung verschlüsselt speichern!)</p>
+</li>
+<li>
+<p><strong>Testergebnisse festhalten:</strong></p>
+</li>
+<li>Screenshot von <code>show vlan brief</code></li>
+<li>Screenshot von <code>show interfaces trunk</code></li>
+<li>Screenshot von <code>show ip interface brief</code></li>
+<li>
+<p>Ping-Tests dokumentieren</p>
+</li>
+<li>
+<p><strong>Sicherheits-Begründung schriftlich:</strong></p>
+</li>
+<li>Warum separates Native VLAN?</li>
+<li>Welche Risiken senkt VLAN-Trennung?</li>
+<li>Warum eigenes Management-VLAN?</li>
+<li>Welche Vorteile hat Voice VLAN?</li>
+</ol>
+<h2 id="zusammenfassung">Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permanent link">&para;</a></h2>
+<p>In dieser Übung haben Sie gelernt:</p>
+<p>✅ <strong>Router-on-a-Stick</strong> mit mehreren Subinterfaces zu konfigurieren<br />
+✅ <strong>Erweiterte VLAN-Strukturen</strong> mit unterschiedlichen Subnetzgrößen zu implementieren<br />
+✅ <strong>Sicherheits-Best-Practices</strong> wie separates Native VLAN anzuwenden<br />
+✅ <strong>Voice VLANs</strong> mit QoS-Unterstützung einzurichten<br />
+✅ <strong>Switch-Management</strong> über dediziertes VLAN (SVI) zu realisieren<br />
+✅ <strong>Trunk-Konfigurationen</strong> mit allowed VLANs zu optimieren<br />
+✅ <strong>Passwort-Verschlüsselung</strong> und Banner zu implementieren<br />
+✅ <strong>Systematische Verifikation</strong> und Troubleshooting durchzuführen  </p>
+<h2 id="nachste-schritte">Nächste Schritte<a class="headerlink" href="#nachste-schritte" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Erweitern Sie die Topologie</strong> mit einem zweiten Switch (Hierarchisches Design)</li>
+<li><strong>Implementieren Sie ACLs</strong> (Access Control Lists) für erweiterte Sicherheit</li>
+<li><strong>Konfigurieren Sie DHCP</strong> anstelle statischer IP-Adressen</li>
+<li><strong>Fügen Sie einen zweiten Router hinzu</strong> für WAN-Connectivity</li>
+<li><strong>Implementieren Sie Routing-Protokolle</strong> (OSPF, EIGRP)</li>
+</ul>
+<hr />
+<p><strong>Viel Erfolg bei der Implementierung! 🚀</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Zurück zum Seitenanfang
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/jtuttas/Cisco-Lab" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

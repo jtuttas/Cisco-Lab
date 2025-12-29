@@ -1,0 +1,276 @@
+// Moodle GIFT Quiz: VLAN Router-on-a-Stick Konfiguration
+// Generiert für die Cisco Lab Übung
+
+$CATEGORY: Cisco/VLAN-Router-on-a-Stick
+
+// === Grundlagen ===
+
+::VLAN Grundlagen 1::Was ist die Hauptfunktion von VLANs in einem Netzwerk?{
+=VLANs segmentieren ein Netzwerk logisch in verschiedene Broadcast-Domänen
+~VLANs erhöhen die physische Bandbreite
+~VLANs ersetzen Router vollständig
+~VLANs verteilen IP-Adressen automatisch
+}
+
+::VLAN Grundlagen 2::Welches Protokoll wird für VLAN-Tagging auf Trunk-Ports verwendet?{
+=802.1Q
+~802.11
+~802.3
+~802.1X
+}
+
+::Router-on-a-Stick::Was ist Router-on-a-Stick?{
+=Eine Technik, bei der ein Router-Port mit mehreren VLANs über Subinterfaces kommuniziert
+~Ein physischer Router, der auf einem Stick montiert ist
+~Eine Routing-Methode ohne VLANs
+~Ein spezieller Switch-Port-Typ
+}
+
+::Native VLAN::Was ist das Standard Native VLAN auf Cisco Switches?{
+=VLAN 1
+~VLAN 0
+~VLAN 99
+~VLAN 100
+}
+
+// === VLAN Konfiguration ===
+
+::VLAN Befehle 1::Welcher Befehl erstellt VLAN 10 auf einem Cisco Switch?{
+=vlan 10
+~create vlan 10
+~add vlan 10
+~set vlan 10
+}
+
+::VLAN Benennung::Mit welchem Befehl wird VLAN 20 "Office" benannt?{
+=name Office
+~vlan name Office
+~set name Office
+~description Office
+}
+
+::VLAN Zuordnung::In welcher Netzmaske ist das Netz 10.10.10.0/27 konfiguriert?{
+=255.255.255.224
+~255.255.255.0
+~255.255.255.128
+~255.255.255.192
+}
+
+// === Switch-Konfiguration ===
+
+::Trunk Port 1::Welcher Befehl konfiguriert einen Port als Trunk?{
+=switchport mode trunk
+~switchport trunk mode
+~set port trunk
+~trunk mode on
+}
+
+::Access Port::Wie wird ein Port dem VLAN 20 als Access-Port zugeordnet?{
+=switchport mode access<br>switchport access vlan 20
+~switchport vlan 20
+~access vlan 20
+~set port vlan 20
+}
+
+::Trunk Allowed VLANs::Welcher Befehl begrenzt die erlaubten VLANs auf einem Trunk-Port auf 10,20,30,40?{
+=switchport trunk allowed vlan 10,20,30,40
+~trunk allow vlan 10,20,30,40
+~allowed vlan 10-40
+~vlan allow 10,20,30,40
+}
+
+::VLAN Verifizierung::Mit welchem Befehl werden alle VLANs auf einem Switch angezeigt?{
+=show vlan brief
+~show vlans
+~display vlan
+~list vlan
+}
+
+::Trunk Status::Welcher Befehl zeigt den Status aller Trunk-Ports?{
+=show interface trunk
+~show trunk
+~display trunk status
+~show port trunk
+}
+
+// === Router-Konfiguration ===
+
+::Subinterface Syntax::Wie wird das Subinterface für VLAN 10 auf g0/0/0 konfiguriert?{
+=interface g0/0/0.10
+~interface g0/0/0\:10
+~subinterface g0/0/0 vlan 10
+~interface vlan 10
+}
+
+::Dot1Q Encapsulation::Welcher Befehl aktiviert 802.1Q Encapsulation für VLAN 20 auf einem Subinterface?{
+=encapsulation dot1Q 20
+~dot1q encapsulation 20
+~encapsulation 802.1q 20
+~vlan encapsulation 20
+}
+
+::Physisches Interface::Was muss am physischen Interface g0/0/0 konfiguriert werden, damit Router-on-a-Stick funktioniert?{
+=no shutdown
+~ip routing enable
+~trunk mode on
+~vlan enable
+}
+
+::IP-Adresse Subinterface::Wie lautet die Gateway-IP für VLAN 20 (10.10.20.0/24)?{
+=10.10.20.1
+~10.10.20.0
+~10.10.20.254
+~10.10.20.255
+}
+
+// === Topologie und Verkabelung ===
+
+::Verkabelung Router-Switch::Welcher Port-Typ wird zwischen Router und Core-Switch verwendet?{
+=Trunk
+~Access
+~Hybrid
+~Monitor
+}
+
+::Switch-Hierarchie::Welcher Switch ist der Core/Distribution Switch in der Topologie?{
+=S1
+~S2
+~S3
+~R-Kiesel
+}
+
+::Etage 2 VLANs::Welche VLANs werden auf Switch S2 (Etage 2) für Access-Ports verwendet?{
+=VLAN 20, 30, 40
+~VLAN 10, 20, 30
+~Nur VLAN 20
+~Alle VLANs
+}
+
+// === Troubleshooting ===
+
+::Inter-VLAN Problem::PCs in unterschiedlichen VLANs können nicht kommunizieren. Was ist die wahrscheinlichste Ursache?{
+=Router Subinterfaces sind nicht konfiguriert oder down
+~VLANs sind nicht erstellt
+~IP-Adressen sind falsch
+~Alle PCs sind offline
+}
+
+::Intra-VLAN Problem::Zwei PCs im gleichen VLAN können nicht kommunizieren. Was sollte NICHT die Ursache sein?{
+=Router Subinterface ist down
+~PCs sind im falschen VLAN
+~IP-Konfiguration ist falsch
+~Switch-Port ist falsch konfiguriert
+}
+
+::Trunk Verifizierung::Ein Trunk-Port funktioniert nicht. Welcher Befehl hilft bei der Diagnose?{
+=show interface <port> switchport
+~ping trunk
+~show running-config
+~show ip route
+}
+
+// === Sicherheit und Best Practices ===
+
+::Best Practice Native VLAN::Was ist eine Best Practice bezüglich Native VLAN?{
+=Ein separates, ungenutztes VLAN als Native VLAN konfigurieren
+~VLAN 1 als Native VLAN verwenden
+~Native VLAN deaktivieren
+~Kein Native VLAN konfigurieren
+}
+
+::Port Security::Was bewirkt Port Security auf einem Access-Port?{
+=Begrenzt die Anzahl und Art der MAC-Adressen auf dem Port
+~Verschlüsselt den Datenverkehr
+~Blockiert alle VLANs
+~Aktiviert Firewall-Regeln
+}
+
+// === Anwendungsfälle ===
+
+::VLAN 10 Zweck::Für welchen Zweck ist VLAN 10 (Management) in der Übung vorgesehen?{
+=IT/Netz-Administration
+~Vertrieb und HR
+~Entwicklung
+~Gäste
+}
+
+::VLAN 40 Sicherheit::Warum sollte das Guest VLAN (40) vom Management VLAN (10) getrennt sein?{
+=Aus Sicherheitsgründen, um Gästen keinen Zugriff auf administrative Ressourcen zu geben
+~Um Bandbreite zu sparen
+~Weil es technisch erforderlich ist
+~Um IP-Adressen zu sparen
+}
+
+// === Nummernfragen ===
+
+::Subnetz-Größe VLAN 10::[markdown]Wie viele nutzbare Host-Adressen bietet das Netz 10.10.10.0/27 für VLAN 10?{
+#30:5
+}
+
+::Subnetz-Größe VLAN 30::[markdown]Wie viele nutzbare Host-Adressen bietet das Netz 10.10.30.0/25 für VLAN 30?{
+#126:5
+}
+
+::Subnetz-Größe VLAN 40::[markdown]Wie viele nutzbare Host-Adressen bietet das Netz 10.10.40.0/26 für VLAN 40?{
+#62:5
+}
+
+// === Kurzantwort-Fragen ===
+
+::Befehl VLAN anzeigen::[markdown]Welcher Befehl zeigt alle VLANs in Kurzform an? (ohne "show"){
+=vlan brief
+=vlan
+}
+
+::Konfiguration speichern::[markdown]Welcher Kurzbefehl speichert die running-config in die startup-config?{
+=wr
+=write
+=write memory
+=copy running-config startup-config
+}
+
+// === Wahr/Falsch ===
+
+::802.1Q Standard::802.1Q ist der IEEE-Standard für VLAN-Tagging.{TRUE}
+
+::Ein Trunk pro VLAN::Für jedes VLAN wird ein separater physischer Trunk-Port benötigt.{FALSE}
+
+::Router notwendig::Für Kommunikation zwischen unterschiedlichen VLANs ist ein Layer 3 Gerät (Router oder Layer 3 Switch) erforderlich.{TRUE}
+
+::Access Port Tagging::Access-Ports taggen Frames mit VLAN-IDs bevor sie zum Endgerät gesendet werden.{FALSE}
+
+::Native VLAN Tagging::Frames im Native VLAN werden auf Trunk-Ports nicht getaggt.{TRUE}
+
+::Subinterface IP::Jedes Subinterface auf dem Router erhält die Gateway-IP-Adresse für das entsprechende VLAN.{TRUE}
+
+// === Matching ===
+
+::VLAN Zuordnung::[markdown]Ordnen Sie die VLANs den richtigen Zwecken zu.{
+=VLAN 10 -> Management (IT/Netz-Admin)
+=VLAN 20 -> Office (Vertrieb/HR/Backoffice)
+=VLAN 30 -> Dev (Entwicklung/Produktion)
+=VLAN 40 -> Guest (Gäste/extern)
+}
+
+::Port-Typen::[markdown]Ordnen Sie die Eigenschaften den Port-Typen zu.{
+=Trunk Port -> Transportiert mehrere VLANs
+=Access Port -> Einem einzelnen VLAN zugeordnet
+=Trunk Port -> Verwendet 802.1Q Tagging
+=Access Port -> Für Endgeräte verwendet
+}
+
+// === Erweiterte Fragen ===
+
+::Konfigurationsreihenfolge::In welcher Reihenfolge sollte die VLAN-Konfiguration idealerweise erfolgen?{
+=1. VLANs auf Switches erstellen, 2. Trunk-Ports konfigurieren, 3. Access-Ports zuweisen, 4. Router Subinterfaces konfigurieren
+~1. Router konfigurieren, 2. VLANs erstellen, 3. Ports konfigurieren
+~1. PCs konfigurieren, 2. VLANs erstellen, 3. Router konfigurieren
+~Die Reihenfolge ist egal
+}
+
+::Inter-VLAN Routing Weg::Welchen Weg nimmt ein Paket von PC-Office1 (VLAN 20) zu PC-Dev1 (VLAN 30)?{
+=PC → S2 → S1 → Router → S1 → S2 → PC
+~PC → S2 → S1 → S2 → PC
+~PC → Router → PC
+~PC → S2 → PC
+}
