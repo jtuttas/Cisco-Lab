@@ -1,0 +1,212 @@
+// ZI-Example Multi-Layer Switch Quiz
+// Moodle GIFT Format
+
+::Q1 - VLAN Konzept::Was ist der Hauptzweck der VLAN-Segmentierung in diesem Netzwerk?{
+=Trennung verschiedener Benutzergruppen für erhöhte Sicherheit und bessere Netzwerkverwaltung
+~Erhöhung der Bandbreite für alle Benutzer
+~Reduzierung der Anzahl benötigter Switches
+~Vereinfachung der IP-Adressvergabe
+}
+
+::Q2 - Layer 3 Switch::Welcher Befehl aktiviert IP-Routing auf einem Multi-Layer Switch?{
+=ip routing
+~enable routing
+~router enable
+~ip route enable
+}
+
+::Q3 - IPv6 Routing::Welcher Befehl aktiviert IPv6 Unicast-Routing auf einem Cisco Multi-Layer Switch?{
+=ipv6 unicast-routing
+~ipv6 routing enable
+~enable ipv6 routing
+~ipv6 router enable
+}
+
+::Q4 - Trunk Konfiguration::Welcher Befehl konfiguriert einen Port als 802.1Q Trunk auf einem Multi-Layer Switch?{
+=switchport mode trunk
+~switchport trunk mode
+~trunk mode enable
+~port trunk enable
+}
+
+::Q5 - Native VLAN::Was ist der Zweck des Native VLANs auf einem Trunk-Port?{
+=Transport von ungetaggtem Traffic und Erhöhung der Sicherheit
+~Erhöhung der Trunk-Geschwindigkeit
+~Automatische VLAN-Zuweisung
+~Aktivierung von Spanning Tree
+}
+
+::Q6 - Native VLAN Sicherheit::Welches Native VLAN wird in der ZI-Example Konfiguration aus Sicherheitsgründen verwendet?{
+=999
+~1
+~99
+~100
+}
+
+::Q7 - SVI Funktion::Was ist ein SVI (Switched Virtual Interface)?{
+=Ein virtuelles Layer 3 Interface für ein VLAN, das als Gateway fungiert
+~Ein physischer Port auf einem Switch
+~Eine Verbindung zwischen zwei Switches
+~Ein Management-Interface
+}
+
+::Q8 - Routed Port::Welcher Befehl konvertiert einen Switchport zu einem Routed Port (Layer 3)?{
+=no switchport
+~switchport routing
+~enable routing
+~layer3 mode
+}
+
+::Q9 - VLAN 10::Welche IPv4-Adresse hat das Gateway für VLAN 10 (Staff)?{
+=192.168.10.254
+~192.168.10.1
+~192.168.10.255
+~192.168.10.100
+}
+
+::Q10 - IPv6 Präfix::Welches IPv6-Präfix wird für VLAN 20 (Student) verwendet?{
+=2001\:DB8\:ACAD\:20\:\:/64
+~2001\:DB8\:ACAD\:10\:\:/64
+~2001\:DB8\:ACAD\:A\:\:/64
+~2001\:DB8\:ACAD\:30\:\:/64
+}
+
+::Q11 - Dual Stack::Was bedeutet "Dual-Stack" in Bezug auf dieses Netzwerk?{
+=Gleichzeitige Verwendung von IPv4 und IPv6
+~Verwendung von zwei Switches
+~Zwei verschiedene VLANs
+~Redundante Trunk-Verbindungen
+}
+
+::Q12 - Management VLAN::Welches VLAN wird für die Switch-Verwaltung verwendet?{
+=99
+~10
+~1
+~999
+}
+
+::Q13 - Access Port::Welcher Befehl weist einen Access-Port dem VLAN 10 zu?{
+=switchport access vlan 10
+~vlan 10 access
+~access vlan 10
+~port vlan 10
+}
+
+::Q14 - PortFast::Warum wird PortFast auf Access-Ports für Endgeräte konfiguriert?{
+=Um die Port-Aktivierung zu beschleunigen und Verzögerungen beim Verbindungsaufbau zu vermeiden
+~Um den Port sicherer zu machen
+~Um VLAN-Tagging zu aktivieren
+~Um Trunking zu ermöglichen
+}
+
+::Q15 - Inter-VLAN Routing::Wie kommuniziert ein PC in VLAN 10 mit einem PC in VLAN 20?{
+=Über das SVI des Multi-Layer Switches, der als Gateway fungiert
+~Direkt über den Access Switch
+~Über einen externen Router
+~Direkt ohne Routing
+}
+
+::Q16 - show vlan brief::Welcher Befehl zeigt eine Übersicht aller VLANs auf einem Switch?{
+=show vlan brief
+~show vlans
+~display vlan
+~list vlan
+}
+
+::Q17 - show interfaces trunk::Welcher Befehl zeigt Informationen über Trunk-Ports?{
+=show interfaces trunk
+~show trunk
+~display trunk interfaces
+~show trunk ports
+}
+
+::Q18 - VLAN Namensgebung::Wie lautet der Name von VLAN 30 in der ZI-Example Konfiguration?{
+=Faculty
+~Professor
+~Teacher
+~Staff
+}
+
+::Q19 - Subnetzmaske::Welche Subnetzmaske wird für die VLAN-Netze verwendet?{
+=255.255.255.0 (/24)
+~255.255.0.0 (/16)
+~255.255.255.128 (/25)
+~255.255.255.224 (/27)
+}
+
+::Q20 - Internet Verbindung::Welches Interface des MLS ist mit dem Internet verbunden?{
+=GigabitEthernet0/2
+~GigabitEthernet0/1
+~FastEthernet0/1
+~Vlan1
+}
+
+::Q21 - Trunk Encapsulation::Welches Trunk-Encapsulation-Protokoll wird in der Konfiguration verwendet?{
+=802.1Q (dot1q)
+~ISL
+~VTP
+~STP
+}
+
+::Q22 - Gateway Test::Welcher Befehl testet die Erreichbarkeit des Gateways von einem PC aus?{
+=ping 192.168.10.254
+~tracert 192.168.10.254
+~show gateway
+~test gateway
+}
+
+::Q23 - Spanning Tree::Welcher Befehl zeigt den Spanning Tree Status?{
+=show spanning-tree
+~show stp
+~display spanning-tree
+~spanning-tree status
+}
+
+::Q24 - write memory::Welcher Befehl speichert die Running-Config in die Startup-Config?{
+=write memory
+=copy running-config startup-config
+~save config
+~write startup
+}
+
+::Q25 - Troubleshooting Routing::Welcher Befehl zeigt die Routing-Tabelle auf dem MLS?{
+=show ip route
+~show routes
+~display routing-table
+~show routing
+}
+
+::Q26 - VLAN Anzahl::Wie viele VLANs werden in der ZI-Example Konfiguration insgesamt verwendet (einschließlich Management und Native)?{
+=5 VLANs (10, 20, 30, 99, 999)
+~3 VLANs
+~4 VLANs
+~6 VLANs
+}
+
+::Q27 - Layer 3 Vorteile::Was ist ein Hauptvorteil der Verwendung eines Multi-Layer Switches gegenüber Router-on-a-Stick?{
+=Höhere Performance beim Inter-VLAN Routing durch Hardware-basiertes Switching
+~Geringere Kosten
+~Einfachere Konfiguration
+~Weniger Ports benötigt
+}
+
+::Q28 - no shutdown::Warum ist der Befehl "no shutdown" auf SVIs wichtig?{
+=SVIs sind standardmäßig deaktiviert und müssen explizit aktiviert werden
+~Um Sicherheit zu erhöhen
+~Um VLAN-Tagging zu aktivieren
+~Um Routing zu ermöglichen
+}
+
+::Q29 - traceroute::Welcher Befehl zeigt den Routing-Pfad zwischen zwei Geräten?{
+=tracert (Windows) oder traceroute (Linux/Cisco)
+~ping
+~pathping
+~route trace
+}
+
+::Q30 - Best Practice::Welche der folgenden ist eine Sicherheits-Best-Practice für VLANs?{
+=Verwendung eines separaten Native VLANs (nicht VLAN 1)
+~Verwendung von VLAN 1 für alle Geräte
+~Deaktivierung aller VLANs
+~Verwendung nur eines VLANs
+}

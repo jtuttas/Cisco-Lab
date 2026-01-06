@@ -12,6 +12,7 @@ nav:
   - Labs:
       - VLAN Router-on-a-Stick: labs/vlan-router-on-stick/index.md
       - VLAN Advanced - R-Nova: labs/vlan-advanced-nova/index.md
+      - Multi-Layer Switch (ZI-Example): labs/zi-example/index.md
 
 # Theme
 theme:

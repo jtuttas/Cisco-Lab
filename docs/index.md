@@ -42,6 +42,28 @@ Eine fortgeschrittene VLAN-Übung mit erweiterten Sicherheitsfeatures, Voice VLA
 - [Moodle GIFT Quiz](labs/vlan-advanced-nova/quiz.gift)
 - [Netzwerk-Diagramm](labs/vlan-advanced-nova/diagram.png)
 
+---
+
+### Multi-Layer Switch mit VLANs und Dual-Stack (ZI-Example)
+
+Eine praxisnahe Übung zur Implementierung eines Multi-Layer Switches mit Layer 3 Funktionalität und Dual-Stack Konfiguration.
+
+**Schwerpunkte:**
+- Multi-Layer Switch Konfiguration mit Layer 3 Funktionalität
+- Inter-VLAN Routing mit SVIs (Switched Virtual Interfaces)
+- Dual-Stack Netzwerk (IPv4 und IPv6)
+- 802.1Q Trunk-Konfiguration mit Native VLAN
+- IP-Routing und IPv6 Unicast-Routing
+- Routed Ports für WAN-Verbindungen
+- Sicherheits-Best-Practices für Enterprise-Netzwerke
+- Systematische Netzwerk-Verifizierung und Troubleshooting
+
+**Ressourcen:**
+- [Lab-Anleitung (Online)](labs/zi-example/index.md)
+- [Lab-Anleitung (PDF)](labs/zi-example/lab.pdf)
+- [Moodle GIFT Quiz](labs/zi-example/quiz.gift)
+- [Netzwerk-Diagramm](labs/zi-example/diagram.png)
+
 ## Über diese Labs
 
 Diese Labs wurden entwickelt für:

@@ -61,6 +61,37 @@ Die Labs sind auch online verfügbar: **[https://jtuttas.github.io/Cisco-Lab/](h
 - 6 VLANs (Verwaltung, Entwicklung, Vertrieb, Voice, Native, Management)
 - 6x PCs + 1x IP-Telefon
 - Erweiterte Sicherheitsfeatures und QoS
+
+---
+
+### Multi-Layer Switch mit VLANs und Dual-Stack (ZI-Example)
+
+**Beschreibung:** Eine praxisnahe Übung zur Implementierung eines Multi-Layer Switches (Layer 3 Switch) mit VLANs und Dual-Stack (IPv4/IPv6) Konfiguration. Diese Übung zeigt die Konfiguration von Inter-VLAN Routing mittels SVIs (Switched Virtual Interfaces) und behandelt moderne Best Practices für Campus-Netzwerke.
+
+**Themen:**
+- Multi-Layer Switch Konfiguration mit Layer 3 Funktionalität
+- Inter-VLAN Routing mit SVIs (Switched Virtual Interfaces)
+- Dual-Stack Netzwerk (IPv4 und IPv6)
+- 802.1Q Trunk-Konfiguration mit Native VLAN
+- IP-Routing und IPv6 Unicast-Routing
+- Routed Ports für WAN-Verbindungen
+- Sicherheits-Best-Practices (separates Native VLAN, Management VLAN)
+- Systematische Netzwerk-Verifizierung und Troubleshooting
+
+**Ressourcen:**
+- 📖 [Lab-Anleitung (Online)](https://jtuttas.github.io/Cisco-Lab/labs/zi-example/)
+- 📄 [Lab-Anleitung (PDF)](out/zi-example/lab.pdf)
+- 🎯 [Moodle GIFT Quiz](out/zi-example/gift/quiz.gift)
+- 🖼️ [Netzwerk-Diagramm (PNG)](out/zi-example/diagram.png)
+- 📐 [Netzwerk-Diagramm (Draw.io)](out/zi-example/diagram.drawio)
+
+**Netzwerk-Topologie:**
+- 1x Multi-Layer Switch (Cisco Catalyst 3650/3850 mit Layer 3)
+- 1x Layer 2 Switch (Cisco Catalyst 2960)
+- 4 VLANs (Staff, Student, Faculty, Management) + Native VLAN
+- 6x PCs in verschiedenen VLANs
+- IPv4 und IPv6 Dual-Stack Konfiguration
+- Internet-Anbindung über Routed Port
 <!-- LABS:END -->
 
 ## 🚀 Schnellstart
