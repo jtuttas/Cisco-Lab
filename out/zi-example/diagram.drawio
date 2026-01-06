@@ -1,0 +1,103 @@
+<mxfile host="app.diagrams.net" modified="2026-01-06T16:22:00.000Z" agent="5.0" version="21.6.5">
+  <diagram name="ZI-Example Network" id="network-topology">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Internet Cloud -->
+        <mxCell id="internet" value="Internet&#xa;209.165.200.224/30" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="440" y="30" width="180" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- MLS (Multi-Layer Switch with Layer 3 capabilities) -->
+        <mxCell id="mls-1" value="MLS&#xa;Multi-Layer Switch&#xa;Layer 3" style="shape=mxgraph.cisco.switches.layer_3_switch;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="480" y="220" width="101" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Switch S1 (Layer 2) -->
+        <mxCell id="switch-1" value="S1&#xa;Layer 2 Switch" style="shape=mxgraph.cisco.switches.workgroup_switch;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="480" y="420" width="101" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- PCs for VLAN 10 (Staff) -->
+        <mxCell id="pc-staff-1" value="PC-Staff1&#xa;VLAN 10&#xa;192.168.10.10" style="shape=mxgraph.cisco.computers_and_peripherals.pc;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="200" y="580" width="78" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="pc-staff-2" value="PC-Staff2&#xa;VLAN 10&#xa;192.168.10.11" style="shape=mxgraph.cisco.computers_and_peripherals.pc;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="320" y="580" width="78" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- PCs for VLAN 20 (Student) -->
+        <mxCell id="pc-student-1" value="PC-Student1&#xa;VLAN 20&#xa;192.168.20.10" style="shape=mxgraph.cisco.computers_and_peripherals.pc;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="440" y="580" width="78" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="pc-student-2" value="PC-Student2&#xa;VLAN 20&#xa;192.168.20.11" style="shape=mxgraph.cisco.computers_and_peripherals.pc;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="560" y="580" width="78" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- PCs for VLAN 30 (Faculty) -->
+        <mxCell id="pc-faculty-1" value="PC-Faculty1&#xa;VLAN 30&#xa;192.168.30.10" style="shape=mxgraph.cisco.computers_and_peripherals.pc;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="680" y="580" width="78" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="pc-faculty-2" value="PC-Faculty2&#xa;VLAN 30&#xa;192.168.30.11" style="shape=mxgraph.cisco.computers_and_peripherals.pc;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="800" y="580" width="78" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- Connection: Internet to MLS -->
+        <mxCell id="link-inet-mls" value="Gi0/2&#xa;209.165.200.225/30&#xa;2001:DB8:ACAD:A::1/64" style="endArrow=none;html=1;rounded=0;strokeWidth=2;strokeColor=#0066CC;" edge="1" parent="1" source="internet" target="mls-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Connection: MLS to S1 (Trunk) -->
+        <mxCell id="link-mls-s1" value="Gi0/1 - Gi0/1&#xa;Trunk (802.1Q)&#xa;Native VLAN 999" style="endArrow=none;html=1;rounded=0;strokeWidth=3;strokeColor=#CC0000;" edge="1" parent="1" source="mls-1" target="switch-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Connections: S1 to PCs (Access Ports) -->
+        <mxCell id="link-s1-staff1" value="Access&#xa;VLAN 10" style="endArrow=none;html=1;rounded=0;strokeWidth=1;strokeColor=#666666;dashed=1;" edge="1" parent="1" source="switch-1" target="pc-staff-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="link-s1-staff2" value="Access&#xa;VLAN 10" style="endArrow=none;html=1;rounded=0;strokeWidth=1;strokeColor=#666666;dashed=1;" edge="1" parent="1" source="switch-1" target="pc-staff-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="link-s1-student1" value="Access&#xa;VLAN 20" style="endArrow=none;html=1;rounded=0;strokeWidth=1;strokeColor=#666666;dashed=1;" edge="1" parent="1" source="switch-1" target="pc-student-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="link-s1-student2" value="Access&#xa;VLAN 20" style="endArrow=none;html=1;rounded=0;strokeWidth=1;strokeColor=#666666;dashed=1;" edge="1" parent="1" source="switch-1" target="pc-student-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="link-s1-faculty1" value="Access&#xa;VLAN 30" style="endArrow=none;html=1;rounded=0;strokeWidth=1;strokeColor=#666666;dashed=1;" edge="1" parent="1" source="switch-1" target="pc-faculty-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="link-s1-faculty2" value="Access&#xa;VLAN 30" style="endArrow=none;html=1;rounded=0;strokeWidth=1;strokeColor=#666666;dashed=1;" edge="1" parent="1" source="switch-1" target="pc-faculty-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- VLAN Information Box -->
+        <mxCell id="vlan-info" value="&lt;b&gt;VLANs (IPv4 + IPv6):&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;VLAN 10 - Staff&lt;/b&gt;&lt;br&gt;IPv4: 192.168.10.0/24&lt;br&gt;IPv6: 2001:DB8:ACAD:10::/64&lt;br&gt;Gateway: 192.168.10.254&lt;br&gt;&lt;br&gt;&lt;b&gt;VLAN 20 - Student&lt;/b&gt;&lt;br&gt;IPv4: 192.168.20.0/24&lt;br&gt;IPv6: 2001:DB8:ACAD:20::/64&lt;br&gt;Gateway: 192.168.20.254&lt;br&gt;&lt;br&gt;&lt;b&gt;VLAN 30 - Faculty&lt;/b&gt;&lt;br&gt;IPv4: 192.168.30.0/24&lt;br&gt;IPv6: 2001:DB8:ACAD:30::/64&lt;br&gt;Gateway: 192.168.30.254&lt;br&gt;&lt;br&gt;&lt;b&gt;VLAN 99 - Management&lt;/b&gt;&lt;br&gt;IPv4: 192.168.99.0/24&lt;br&gt;Gateway: 192.168.99.254" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacing=10;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="220" width="280" height="380" as="geometry" />
+        </mxCell>
+        
+        <!-- Legend for connection types -->
+        <mxCell id="legend" value="&lt;b&gt;Legende:&lt;/b&gt;&lt;br&gt;&lt;hr&gt;Trunk (802.1Q)&lt;br&gt;- - - Access Port" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacing=10;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="860" y="220" width="200" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;ZI-Example Network Topology&lt;/b&gt;&lt;br&gt;Multi-Layer Switch mit VLANs und IPv4/IPv6 Dual-Stack" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="350" y="700" width="480" height="60" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
