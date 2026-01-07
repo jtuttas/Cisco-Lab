@@ -101,11 +101,14 @@ Der Agent konvertiert Geräte & Links in eine **drawio XML** (diagrams.net) Date
 
 **Parameter:** Hintergrund weiß, Scale 2, Border 20.
 
-**Empfohlener Export-Befehl (Linux/Unix):**
-```bash
-xvfb-run -a drawio --export --format png --scale 2 --border 20 \
-  --output out/<name>/diagram.png out/<name>/diagram.drawio
-```
+#### Qualitätsanforderungen:
+
+- **WICHTIG**: Achte darauf, dass die korrekte draw.io genutzt wird und die png Datei im korrekten Pfad gespeichert wird.
+- Klare Lesbarkeit der Texte
+- Hohe Auflösung (Scale 2) für Details
+- Weißer Hintergrund
+- Korrekte Darstellung der Cisco-Symbole
+
 
 **Hinweis:** Auf Linux benötigt draw.io CLI einen X-Server (daher `xvfb-run`). Auf Windows/macOS kann der Befehl ohne `xvfb-run -a` ausgeführt werden.
 
@@ -142,10 +145,16 @@ Jeder Abschnitt sollte prägnant und verständlich formuliert sein, um den Lernp
 2) `wkhtmltopdf`
 3) `reportlab` (Fallback)
 
+#### Qualitätsanforderungen:
+
+- **WICHTIG**: Kontrolliere ob alle im Markdown referenzierten Bilder (z.B. diagram.png) korrekt im PDF dargestellt werden.
+
 ### 5) Lab → Moodle GIFT
 Der Agent generiert auf Basis von `lab.md` ein Moodle-importierbares `quiz.gift`.
 
-**Default:** 10–20 Fragen, Mix aus MCQ, TF, Matching, Short Answer.
+**Default:** 10–20 Fragen, Mix aus Single Choice Fragen, Multiple Choice Fragen (MCQ), TF, Matching, Short Answer.
+
+**Wichtig**: Die Antworten in den Fragen müssen gemischt werden, sodass die korrekten Antworten nicht immer an der gleichen Position stehen. Falsche Antworten sollten mit einem Feedback versehen werden, das den Lernenden aufklärt, warum die Antwort falsch ist.
 
 ---
 
